@@ -1,11 +1,11 @@
 package vista;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import java.awt.ScrollPane;
@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.Box;
 import javax.swing.border.LineBorder;
+
+import code.ListaPalabras;
+
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -47,13 +50,15 @@ public class Partida {
 	 * Create the application.
 	 */
 	public Partida() {
-		initialize();
+		ListaPalabras list = new ListaPalabras();
+		initialize(list);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final ListaPalabras list) {
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 700, 500);
@@ -74,15 +79,15 @@ public class Partida {
 		menu.setBorder(new LineBorder(Color.BLACK));
 		menu.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Iniciar Juego");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnNewButton.setBounds(33, 8, 300, 46);
-		menu.add(btnNewButton);
+		JButton btnIniciar = new JButton("Iniciar Juego");
+		btnIniciar.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnIniciar.setBounds(33, 8, 300, 46);
+		menu.add(btnIniciar);
 		
-		JButton btnResolverJuego = new JButton("Resolver Juego");
-		btnResolverJuego.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnResolverJuego.setBounds(33, 62, 300, 46);
-		menu.add(btnResolverJuego);
+		JButton btnResolver = new JButton("Resolver Juego");
+		btnResolver.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnResolver.setBounds(33, 62, 300, 46);
+		menu.add(btnResolver);
 		
 		JPanel palabraSecreta = new JPanel();
 		palabraSecreta.setBorder(new LineBorder(Color.BLACK));
@@ -271,9 +276,21 @@ public class Partida {
 		tglbtnL.setBounds(316, 36, 50, 30);
 		letras.add(tglbtnL);
 		panel.setLayout(gl_panel);
-		btnNewButton.addActionListener(new ActionListener() {
+		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		ActionListener aIniciar = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Random r = new Random();
+				int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
+				System.out.println(list.getList(r1));
+			}
+		};
+		btnIniciar.addActionListener(aIniciar);
+		
 	}
+	
 }
