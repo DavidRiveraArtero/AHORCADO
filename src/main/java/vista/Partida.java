@@ -7,19 +7,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import java.awt.ScrollPane;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.Box;
 import javax.swing.border.LineBorder;
-
 import code.ListaPalabras;
-
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JTextField;
-import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -29,6 +22,7 @@ public class Partida {
 
 	private JFrame frame;
 	private JTextField txtT;
+	private String secreto;
 
 	/**
 	 * Launch the application.
@@ -96,10 +90,10 @@ public class Partida {
 		
 		JTextPane txtpnPalabraSecreta = new JTextPane();
 		txtpnPalabraSecreta.setEditable(false);
-		txtpnPalabraSecreta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnPalabraSecreta.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPalabraSecreta.setText("Palabra secreta");
 		txtpnPalabraSecreta.setBackground(Color.GRAY);
-		txtpnPalabraSecreta.setBounds(10, 53, 99, 23);
+		txtpnPalabraSecreta.setBounds(10, 49, 158, 31);
 		palabraSecreta.add(txtpnPalabraSecreta);
 		
 		txtT = new JTextField();
@@ -282,15 +276,37 @@ public class Partida {
 		});
 		
 		ActionListener aIniciar = new ActionListener() {
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Random r = new Random();
 				int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
-				System.out.println(list.getList(r1));
+				setSecreto(secreto = list.getList(r1));
+			}
+			
+		};
+		
+		ActionListener aResolver = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(getSecreto());
 			}
 		};
-		btnIniciar.addActionListener(aIniciar);
 		
+		
+		btnIniciar.addActionListener(aIniciar);
+		btnResolver.addActionListener(aResolver);
+		
+	}
+	
+	// Getters y setters para la partida.
+	public void setSecreto(String secreto) {
+		this.secreto = secreto;
+	}
+	public String getSecreto() {
+		return secreto;
 	}
 	
 }
