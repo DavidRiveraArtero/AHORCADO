@@ -16,6 +16,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JToggleButton;
 
 public class Partida {
 
@@ -53,20 +58,20 @@ public class Partida {
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		frame.getContentPane().add(panel);
 		
 		JPanel ahorcado = new JPanel();
 		ahorcado.setBorder(new LineBorder(Color.BLACK));
-		ahorcado.setBounds(401, 11, 273, 439);
 		ahorcado.setBackground(Color.GRAY);
-		frame.getContentPane().add(ahorcado);
 		ahorcado.setLayout(null);
 		
 		JPanel menu = new JPanel();
 		menu.setBackground(Color.GRAY);
 		menu.setBorder(new LineBorder(Color.BLACK));
-		menu.setBounds(10, 11, 381, 118);
-		frame.getContentPane().add(menu);
 		menu.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Iniciar Juego");
@@ -82,11 +87,10 @@ public class Partida {
 		JPanel palabraSecreta = new JPanel();
 		palabraSecreta.setBorder(new LineBorder(Color.BLACK));
 		palabraSecreta.setBackground(Color.GRAY);
-		palabraSecreta.setBounds(10, 141, 381, 130);
-		frame.getContentPane().add(palabraSecreta);
 		palabraSecreta.setLayout(null);
 		
 		JTextPane txtpnPalabraSecreta = new JTextPane();
+		txtpnPalabraSecreta.setEditable(false);
 		txtpnPalabraSecreta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnPalabraSecreta.setText("Palabra secreta");
 		txtpnPalabraSecreta.setBackground(Color.GRAY);
@@ -94,6 +98,7 @@ public class Partida {
 		palabraSecreta.add(txtpnPalabraSecreta);
 		
 		txtT = new JTextField();
+		txtT.setEditable(false);
 		txtT.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtT.setForeground(Color.WHITE);
 		txtT.setBackground(Color.BLACK);
@@ -104,114 +109,168 @@ public class Partida {
 		JPanel letras = new JPanel();
 		letras.setBorder(new LineBorder(Color.BLACK));
 		letras.setBackground(Color.GRAY);
-		letras.setBounds(10, 282, 381, 168);
-		frame.getContentPane().add(letras);
 		letras.setLayout(null);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(menu, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+						.addComponent(palabraSecreta, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+						.addComponent(letras, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addComponent(ahorcado, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(11)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(menu, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(palabraSecreta, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(letras, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+						.addComponent(ahorcado, GroupLayout.PREFERRED_SIZE, 439, GroupLayout.PREFERRED_SIZE)))
+		);
 		
-		JButton btnA = new JButton("A");
-		btnA.setBounds(18, 8, 56, 23);
-		letras.add(btnA);
+		JToggleButton tglbtnA = new JToggleButton("A");
+		tglbtnA.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnA.setBounds(11, 3, 50, 30);
+		letras.add(tglbtnA);
 		
-		JButton btnB = new JButton("B");
-		btnB.setActionCommand("B");
-		btnB.setBounds(88, 8, 56, 23);
-		letras.add(btnB);
+		JToggleButton tglbtnB = new JToggleButton("B");
+		tglbtnB.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnB.setBounds(72, 3, 50, 30);
+		letras.add(tglbtnB);
 		
-		JButton btnC = new JButton("C");
-		btnC.setBounds(160, 8, 56, 23);
-		letras.add(btnC);
+		JToggleButton tglbtnC = new JToggleButton("C");
+		tglbtnC.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnC.setBounds(133, 3, 50, 30);
+		letras.add(tglbtnC);
 		
-		JButton btnE = new JButton("E");
-		btnE.setBounds(304, 8, 56, 23);
-		letras.add(btnE);
+		JToggleButton tglbtnD = new JToggleButton("D");
+		tglbtnD.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnD.setBounds(194, 3, 50, 30);
+		letras.add(tglbtnD);
 		
-		JButton btnD = new JButton("D");
-		btnD.setBounds(232, 8, 56, 23);
-		letras.add(btnD);
+		JToggleButton tglbtnE = new JToggleButton("E");
+		tglbtnE.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnE.setBounds(255, 3, 50, 30);
+		letras.add(tglbtnE);
 		
-		JButton btnF = new JButton("F");
-		btnF.setBounds(18, 39, 56, 23);
-		letras.add(btnF);
+		JToggleButton tglbtnG = new JToggleButton("G");
+		tglbtnG.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnG.setBounds(11, 36, 50, 30);
+		letras.add(tglbtnG);
 		
-		JButton btnG = new JButton("G");
-		btnG.setBounds(88, 39, 56, 23);
-		letras.add(btnG);
+		JToggleButton tglbtnH = new JToggleButton("H");
+		tglbtnH.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnH.setBounds(72, 36, 50, 30);
+		letras.add(tglbtnH);
 		
-		JButton btnH = new JButton("H");
-		btnH.setBounds(160, 39, 56, 23);
-		letras.add(btnH);
+		JToggleButton tglbtnI = new JToggleButton("I");
+		tglbtnI.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnI.setBounds(133, 36, 50, 30);
+		letras.add(tglbtnI);
 		
-		JButton btnI = new JButton("I");
-		btnI.setBounds(232, 39, 56, 23);
-		letras.add(btnI);
+		JToggleButton tglbtnJ = new JToggleButton("J");
+		tglbtnJ.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnJ.setBounds(194, 36, 50, 30);
+		letras.add(tglbtnJ);
 		
-		JButton btnJ = new JButton("J");
-		btnJ.setBounds(304, 39, 56, 23);
-		letras.add(btnJ);
+		JToggleButton tglbtnK = new JToggleButton("K");
+		tglbtnK.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnK.setBounds(255, 36, 50, 30);
+		letras.add(tglbtnK);
 		
-		JButton btnK = new JButton("K");
-		btnK.setBounds(16, 70, 56, 23);
-		letras.add(btnK);
+		JToggleButton tglbtnM = new JToggleButton("M");
+		tglbtnM.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnM.setBounds(11, 69, 50, 30);
+		letras.add(tglbtnM);
 		
-		JButton btnL = new JButton("L");
-		btnL.setBounds(88, 70, 56, 23);
-		letras.add(btnL);
+		JToggleButton tglbtnN = new JToggleButton("N");
+		tglbtnN.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnN.setBounds(72, 69, 50, 30);
+		letras.add(tglbtnN);
 		
-		JButton btnM = new JButton("M");
-		btnM.setBounds(160, 70, 56, 23);
-		letras.add(btnM);
+		JToggleButton tglbtnÑ = new JToggleButton("Ñ");
+		tglbtnÑ.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnÑ.setBounds(133, 69, 50, 30);
+		letras.add(tglbtnÑ);
 		
-		JButton btnN = new JButton("N");
-		btnN.setBounds(232, 70, 56, 23);
-		letras.add(btnN);
+		JToggleButton tglbtnO = new JToggleButton("O");
+		tglbtnO.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnO.setBounds(194, 69, 50, 30);
+		letras.add(tglbtnO);
 		
-		JButton btnÑ = new JButton("Ñ");
-		btnÑ.setBounds(304, 70, 56, 23);
-		letras.add(btnÑ);
+		JToggleButton tglbtnP = new JToggleButton("P");
+		tglbtnP.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnP.setBounds(255, 69, 50, 30);
+		letras.add(tglbtnP);
 		
-		JButton btnO = new JButton("O");
-		btnO.setBounds(16, 101, 56, 23);
-		letras.add(btnO);
+		JToggleButton tglbtnF = new JToggleButton("F");
+		tglbtnF.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnF.setBounds(316, 3, 50, 30);
+		letras.add(tglbtnF);
 		
-		JButton btnP = new JButton("P");
-		btnP.setBounds(88, 101, 56, 23);
-		letras.add(btnP);
+		JToggleButton tglbtnW = new JToggleButton("W");
+		tglbtnW.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnW.setBounds(72, 135, 50, 30);
+		letras.add(tglbtnW);
 		
-		JButton btnQ = new JButton("Q");
-		btnQ.setBounds(160, 101, 56, 23);
-		letras.add(btnQ);
+		JToggleButton tglbtnX = new JToggleButton("X");
+		tglbtnX.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnX.setBounds(133, 135, 50, 30);
+		letras.add(tglbtnX);
 		
-		JButton btnR = new JButton("R");
-		btnR.setBounds(232, 101, 56, 23);
-		letras.add(btnR);
+		JToggleButton tglbtnY = new JToggleButton("Y");
+		tglbtnY.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnY.setBounds(194, 135, 50, 30);
+		letras.add(tglbtnY);
 		
-		JButton btnS = new JButton("S");
-		btnS.setBounds(304, 101, 56, 23);
-		letras.add(btnS);
+		JToggleButton tglbtnZ = new JToggleButton("Z");
+		tglbtnZ.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnZ.setBounds(255, 135, 50, 30);
+		letras.add(tglbtnZ);
 		
-		JButton btnV = new JButton("V");
-		btnV.setBounds(68, 132, 56, 23);
-		letras.add(btnV);
+		JToggleButton tglbtnR = new JToggleButton("R");
+		tglbtnR.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnR.setBounds(21, 102, 50, 30);
+		letras.add(tglbtnR);
 		
-		JButton btnW = new JButton("W");
-		btnW.setBounds(130, 132, 56, 23);
-		letras.add(btnW);
+		JToggleButton tglbtnS = new JToggleButton("S");
+		tglbtnS.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnS.setBounds(92, 102, 50, 30);
+		letras.add(tglbtnS);
 		
-		JButton btnX = new JButton("X");
-		btnX.setBounds(192, 132, 56, 23);
-		letras.add(btnX);
+		JToggleButton tglbtnT = new JToggleButton("T");
+		tglbtnT.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnT.setBounds(163, 102, 50, 30);
+		letras.add(tglbtnT);
 		
-		JButton btnT = new JButton("T");
-		btnT.setBounds(6, 132, 56, 23);
-		letras.add(btnT);
+		JToggleButton tglbtnU = new JToggleButton("U");
+		tglbtnU.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnU.setBounds(234, 102, 50, 30);
+		letras.add(tglbtnU);
 		
-		JButton btnY = new JButton("Y");
-		btnY.setBounds(254, 132, 56, 23);
-		letras.add(btnY);
+		JToggleButton tglbtnV = new JToggleButton("V");
+		tglbtnV.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnV.setBounds(305, 102, 50, 30);
+		letras.add(tglbtnV);
 		
-		JButton btnZ = new JButton("Z");
-		btnZ.setBounds(316, 132, 56, 23);
-		letras.add(btnZ);
+		JToggleButton tglbtnQ = new JToggleButton("Q");
+		tglbtnQ.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnQ.setBounds(316, 69, 50, 30);
+		letras.add(tglbtnQ);
+		
+		JToggleButton tglbtnL = new JToggleButton("L");
+		tglbtnL.setBorder(new LineBorder(Color.DARK_GRAY));
+		tglbtnL.setBounds(316, 36, 50, 30);
+		letras.add(tglbtnL);
+		panel.setLayout(gl_panel);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
