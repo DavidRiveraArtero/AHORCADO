@@ -270,34 +270,26 @@ public class Partida {
 		tglbtnL.setBounds(316, 36, 50, 30);
 		letras.add(tglbtnL);
 		panel.setLayout(gl_panel);
-		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
-		ActionListener aIniciar = new ActionListener() {
-			
-			
+		// Acciones de los botones.
+		
+		btnIniciar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Random r = new Random();
 				int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
 				setSecreto(secreto = list.getList(r1));
+				
 			}
-			
-		};
+		});
 		
-		ActionListener aResolver = new ActionListener() {
-			
+		btnResolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(getSecreto());
+				
 			}
-		};
-		
-		
-		btnIniciar.addActionListener(aIniciar);
-		btnResolver.addActionListener(aResolver);
+		});
 		
 	}
 	
