@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -53,6 +55,7 @@ public class Partida {
 	JToggleButton tglbtnZ;
 	JTextPane numIntentos;
 	JTextPane numVidas;
+	ListaPalabras list = new ListaPalabras();
 
 	/**
 	 * Launch the application.
@@ -74,14 +77,16 @@ public class Partida {
 	 * Create the application.
 	 */
 	public Partida() {
-		ListaPalabras list = new ListaPalabras();
-		initialize(list);
+
+		initialize();
+		iniciarSecreto(list);
+
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(final ListaPalabras list) {
+	private void initialize() {
 
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
@@ -324,13 +329,7 @@ public class Partida {
 		btnIniciar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Random r = new Random();
-				int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
-				setSecreto(secreto = list.getList(r1));
-				letras();
-				numVidas.setText("5");
-				numIntentos.setText("10");
-				textoSecreto();
+				iniciarSecreto(list);
 			}
 		});
 
@@ -348,182 +347,182 @@ public class Partida {
 				comparaSecreto('A');
 			}
 		});
-		
+
 		tglbtnB.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('B');
 			}
 		});
-		
+
 		tglbtnC.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('C');
 			}
 		});
-		
+
 		tglbtnD.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('D');
 			}
 		});
-		
+
 		tglbtnE.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('E');
 			}
 		});
-		
+
 		tglbtnF.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('F');
 			}
 		});
-		
+
 		tglbtnG.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('G');
 			}
 		});
-		
+
 		tglbtnH.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('H');
 			}
 		});
-		
+
 		tglbtnI.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('I');
 			}
 		});
-		
+
 		tglbtnJ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('J');
 			}
 		});
-		
+
 		tglbtnK.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('K');
 			}
 		});
-		
+
 		tglbtnL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('L');
 			}
 		});
-		
+
 		tglbtnM.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('M');
 			}
 		});
-		
+
 		tglbtnN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('N');
 			}
 		});
-		
+
 		tglbtnÑ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('Ñ');
 			}
 		});
-		
+
 		tglbtnO.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('O');
 			}
 		});
-		
+
 		tglbtnP.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('P');
 			}
 		});
-		
+
 		tglbtnQ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('Q');
 			}
 		});
-		
+
 		tglbtnR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('R');
 			}
 		});
-		
+
 		tglbtnS.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('S');
 			}
 		});
-		
+
 		tglbtnT.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('T');
 			}
 		});
-		
+
 		tglbtnU.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('U');
 			}
 		});
-		
+
 		tglbtnV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('V');
 			}
 		});
-		
+
 		tglbtnW.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('W');
 			}
 		});
-		
+
 		tglbtnX.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('X');
 			}
 		});
-		
+
 		tglbtnY.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				comparaSecreto('Y');
 			}
 		});
-		
+
 		tglbtnZ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -580,9 +579,10 @@ public class Partida {
 	// Este metodo comprueba si la letra seleccionada se encuentra en la palabra
 	// secreta.
 	public void comparaSecreto(char letra) {
-		String texto = txtPalabra.getText();
+		String texto = txtPalabra.getText(), inteTxt="", vidTxt="";
 		char[] tChar = texto.toCharArray();
 		boolean sale = false;
+		int inte = Integer.parseInt(numIntentos.getText()), vid = Integer.parseInt(numVidas.getText());
 
 		for (int i = 0; i < this.secreto.length(); i++) {
 			if (secreto.charAt(i) == letra) {
@@ -590,10 +590,40 @@ public class Partida {
 				sale = true;
 			}
 		}
+
+		if (sale == false) {
+			inte --;
+		}
 		
+		if (inte == 0) {
+			inte = 10;
+			vid --;
+		}
+		
+		if (vid > 0) {
+			JOptionPane.showMessageDialog(null, "Game Over\nIniciando otra partida.");
+			iniciarSecreto(list);
+		}
+		
+		inteTxt=Integer.toString(inte);
+		vidTxt=Integer.toString(vid);
 		texto = String.valueOf(tChar);
 		txtPalabra.setText(texto);
+		numIntentos.setText(inteTxt);
+		numVidas.setText(vidTxt);
+		
+	}
 
+	// Este metodo inicia partida, se ha decidido combertirlo en un metodo aparte
+	// por que se usa en mas de un sitio.
+	private void iniciarSecreto(ListaPalabras list) {
+		Random r = new Random();
+		int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
+		setSecreto(secreto = list.getList(r1));
+		letras();
+		numVidas.setText("5");
+		numIntentos.setText("10");
+		textoSecreto();
 	}
 
 	// Getters y setters para la partida.
