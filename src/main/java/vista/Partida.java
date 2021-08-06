@@ -19,40 +19,40 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JToggleButton;
+import javax.swing.JButton;
 
 public class Partida {
 
 	private JFrame frame;
 	private JTextField txtPalabra;
 	private String secreto;
-	JToggleButton tglbtnA;
-	JToggleButton tglbtnB;
-	JToggleButton tglbtnC;
-	JToggleButton tglbtnD;
-	JToggleButton tglbtnE;
-	JToggleButton tglbtnF;
-	JToggleButton tglbtnG;
-	JToggleButton tglbtnH;
-	JToggleButton tglbtnI;
-	JToggleButton tglbtnJ;
-	JToggleButton tglbtnK;
-	JToggleButton tglbtnL;
-	JToggleButton tglbtnM;
-	JToggleButton tglbtnN;
-	JToggleButton tglbtnÑ;
-	JToggleButton tglbtnO;
-	JToggleButton tglbtnP;
-	JToggleButton tglbtnQ;
-	JToggleButton tglbtnR;
-	JToggleButton tglbtnS;
-	JToggleButton tglbtnT;
-	JToggleButton tglbtnU;
-	JToggleButton tglbtnV;
-	JToggleButton tglbtnW;
-	JToggleButton tglbtnX;
-	JToggleButton tglbtnY;
-	JToggleButton tglbtnZ;
+	JButton btnA;
+	JButton btnB;
+	JButton btnC;
+	JButton btnD;
+	JButton btnE;
+	JButton btnF;
+	JButton btnG;
+	JButton btnH;
+	JButton btnI;
+	JButton btnJ;
+	JButton btnK;
+	JButton btnL;
+	JButton btnM;
+	JButton btnN;
+	JButton btnÑ;
+	JButton btnO;
+	JButton btnP;
+	JButton btnQ;
+	JButton btnR;
+	JButton btnS;
+	JButton btnT;
+	JButton btnU;
+	JButton btnV;
+	JButton btnW;
+	JButton btnX;
+	JButton btnY;
+	JButton btnZ;
 	JTextPane numIntentos;
 	JTextPane numVidas;
 	ListaPalabras list = new ListaPalabras();
@@ -192,140 +192,140 @@ public class Partida {
 		numVidas.setBounds(73, 11, 18, 27);
 		palabraSecreta.add(numVidas);
 
-		tglbtnA = new JToggleButton("A");
-		tglbtnA.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnA.setBounds(11, 3, 50, 30);
-		letras.add(tglbtnA);
+		btnA = new JButton("A");
+		btnA.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnA.setBounds(11, 3, 50, 30);
+		letras.add(btnA);
 
-		tglbtnB = new JToggleButton("B");
-		tglbtnB.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnB.setBounds(72, 3, 50, 30);
-		letras.add(tglbtnB);
+		btnB = new JButton("B");
+		btnB.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnB.setBounds(72, 3, 50, 30);
+		letras.add(btnB);
 
-		tglbtnC = new JToggleButton("C");
-		tglbtnC.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnC.setBounds(133, 3, 50, 30);
-		letras.add(tglbtnC);
+		btnC = new JButton("C");
+		btnC.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnC.setBounds(133, 3, 50, 30);
+		letras.add(btnC);
 
-		tglbtnD = new JToggleButton("D");
-		tglbtnD.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnD.setBounds(194, 3, 50, 30);
-		letras.add(tglbtnD);
+		btnD = new JButton("D");
+		btnD.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnD.setBounds(194, 3, 50, 30);
+		letras.add(btnD);
 
-		tglbtnE = new JToggleButton("E");
-		tglbtnE.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnE.setBounds(255, 3, 50, 30);
-		letras.add(tglbtnE);
+		btnE = new JButton("E");
+		btnE.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnE.setBounds(255, 3, 50, 30);
+		letras.add(btnE);
 
-		tglbtnG = new JToggleButton("G");
-		tglbtnG.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnG.setBounds(11, 36, 50, 30);
-		letras.add(tglbtnG);
+		btnG = new JButton("G");
+		btnG.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnG.setBounds(11, 36, 50, 30);
+		letras.add(btnG);
 
-		tglbtnH = new JToggleButton("H");
-		tglbtnH.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnH.setBounds(72, 36, 50, 30);
-		letras.add(tglbtnH);
+		btnH = new JButton("H");
+		btnH.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnH.setBounds(72, 36, 50, 30);
+		letras.add(btnH);
 
-		tglbtnI = new JToggleButton("I");
-		tglbtnI.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnI.setBounds(133, 36, 50, 30);
-		letras.add(tglbtnI);
+		btnI = new JButton("I");
+		btnI.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnI.setBounds(133, 36, 50, 30);
+		letras.add(btnI);
 
-		tglbtnJ = new JToggleButton("J");
-		tglbtnJ.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnJ.setBounds(194, 36, 50, 30);
-		letras.add(tglbtnJ);
+		btnJ = new JButton("J");
+		btnJ.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnJ.setBounds(194, 36, 50, 30);
+		letras.add(btnJ);
 
-		tglbtnK = new JToggleButton("K");
-		tglbtnK.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnK.setBounds(255, 36, 50, 30);
-		letras.add(tglbtnK);
+		btnK = new JButton("K");
+		btnK.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnK.setBounds(255, 36, 50, 30);
+		letras.add(btnK);
 
-		tglbtnM = new JToggleButton("M");
-		tglbtnM.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnM.setBounds(11, 69, 50, 30);
-		letras.add(tglbtnM);
+		btnM = new JButton("M");
+		btnM.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnM.setBounds(11, 69, 50, 30);
+		letras.add(btnM);
 
-		tglbtnN = new JToggleButton("N");
-		tglbtnN.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnN.setBounds(72, 69, 50, 30);
-		letras.add(tglbtnN);
+		btnN = new JButton("N");
+		btnN.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnN.setBounds(72, 69, 50, 30);
+		letras.add(btnN);
 
-		tglbtnÑ = new JToggleButton("Ñ");
-		tglbtnÑ.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnÑ.setBounds(133, 69, 50, 30);
-		letras.add(tglbtnÑ);
+		btnÑ = new JButton("Ñ");
+		btnÑ.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnÑ.setBounds(133, 69, 50, 30);
+		letras.add(btnÑ);
 
-		tglbtnO = new JToggleButton("O");
-		tglbtnO.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnO.setBounds(194, 69, 50, 30);
-		letras.add(tglbtnO);
+		btnO = new JButton("O");
+		btnO.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnO.setBounds(194, 69, 50, 30);
+		letras.add(btnO);
 
-		tglbtnP = new JToggleButton("P");
-		tglbtnP.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnP.setBounds(255, 69, 50, 30);
-		letras.add(tglbtnP);
+		btnP = new JButton("P");
+		btnP.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnP.setBounds(255, 69, 50, 30);
+		letras.add(btnP);
 
-		tglbtnF = new JToggleButton("F");
-		tglbtnF.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnF.setBounds(316, 3, 50, 30);
-		letras.add(tglbtnF);
+		btnF = new JButton("F");
+		btnF.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnF.setBounds(316, 3, 50, 30);
+		letras.add(btnF);
 
-		tglbtnW = new JToggleButton("W");
-		tglbtnW.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnW.setBounds(72, 135, 50, 30);
-		letras.add(tglbtnW);
+		btnW = new JButton("W");
+		btnW.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnW.setBounds(72, 135, 50, 30);
+		letras.add(btnW);
 
-		tglbtnX = new JToggleButton("X");
-		tglbtnX.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnX.setBounds(133, 135, 50, 30);
-		letras.add(tglbtnX);
+		btnX = new JButton("X");
+		btnX.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnX.setBounds(133, 135, 50, 30);
+		letras.add(btnX);
 
-		tglbtnY = new JToggleButton("Y");
-		tglbtnY.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnY.setBounds(194, 135, 50, 30);
-		letras.add(tglbtnY);
+		btnY = new JButton("Y");
+		btnY.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnY.setBounds(194, 135, 50, 30);
+		letras.add(btnY);
 
-		tglbtnZ = new JToggleButton("Z");
-		tglbtnZ.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnZ.setBounds(255, 135, 50, 30);
-		letras.add(tglbtnZ);
+		btnZ = new JButton("Z");
+		btnZ.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnZ.setBounds(255, 135, 50, 30);
+		letras.add(btnZ);
 
-		tglbtnR = new JToggleButton("R");
-		tglbtnR.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnR.setBounds(21, 102, 50, 30);
-		letras.add(tglbtnR);
+		btnR = new JButton("R");
+		btnR.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnR.setBounds(21, 102, 50, 30);
+		letras.add(btnR);
 
-		tglbtnS = new JToggleButton("S");
-		tglbtnS.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnS.setBounds(92, 102, 50, 30);
-		letras.add(tglbtnS);
+		btnS = new JButton("S");
+		btnS.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnS.setBounds(92, 102, 50, 30);
+		letras.add(btnS);
 
-		tglbtnT = new JToggleButton("T");
-		tglbtnT.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnT.setBounds(163, 102, 50, 30);
-		letras.add(tglbtnT);
+		btnT = new JButton("T");
+		btnT.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnT.setBounds(163, 102, 50, 30);
+		letras.add(btnT);
 
-		tglbtnU = new JToggleButton("U");
-		tglbtnU.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnU.setBounds(234, 102, 50, 30);
-		letras.add(tglbtnU);
+		btnU = new JButton("U");
+		btnU.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnU.setBounds(234, 102, 50, 30);
+		letras.add(btnU);
 
-		tglbtnV = new JToggleButton("V");
-		tglbtnV.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnV.setBounds(305, 102, 50, 30);
-		letras.add(tglbtnV);
+		btnV = new JButton("V");
+		btnV.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnV.setBounds(305, 102, 50, 30);
+		letras.add(btnV);
 
-		tglbtnQ = new JToggleButton("Q");
-		tglbtnQ.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnQ.setBounds(316, 69, 50, 30);
-		letras.add(tglbtnQ);
+		btnQ = new JButton("Q");
+		btnQ.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnQ.setBounds(316, 69, 50, 30);
+		letras.add(btnQ);
 
-		tglbtnL = new JToggleButton("L");
-		tglbtnL.setBorder(new LineBorder(Color.DARK_GRAY));
-		tglbtnL.setBounds(316, 36, 50, 30);
-		letras.add(tglbtnL);
+		btnL = new JButton("L");
+		btnL.setBorder(new LineBorder(Color.DARK_GRAY));
+		btnL.setBounds(316, 36, 50, 30);
+		letras.add(btnL);
 		panel.setLayout(gl_panel);
 
 		// Acciones de los botones.
@@ -344,191 +344,219 @@ public class Partida {
 			}
 		});
 
-		tglbtnA.addActionListener(new ActionListener() {
+		btnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnA.setEnabled(false);
 				comparaSecreto('A');
 			}
 		});
 
-		tglbtnB.addActionListener(new ActionListener() {
+		btnB.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnB.setEnabled(false);
 				comparaSecreto('B');
 			}
 		});
 
-		tglbtnC.addActionListener(new ActionListener() {
+		btnC.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnC.setEnabled(false);
 				comparaSecreto('C');
 			}
 		});
 
-		tglbtnD.addActionListener(new ActionListener() {
+		btnD.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnD.setEnabled(false);
 				comparaSecreto('D');
 			}
 		});
 
-		tglbtnE.addActionListener(new ActionListener() {
+		btnE.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnE.setEnabled(false);
 				comparaSecreto('E');
 			}
 		});
 
-		tglbtnF.addActionListener(new ActionListener() {
+		btnF.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnF.setEnabled(false);
 				comparaSecreto('F');
 			}
 		});
 
-		tglbtnG.addActionListener(new ActionListener() {
+		btnG.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnG.setEnabled(false);
 				comparaSecreto('G');
 			}
 		});
 
-		tglbtnH.addActionListener(new ActionListener() {
+		btnH.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnH.setEnabled(false);
 				comparaSecreto('H');
 			}
 		});
 
-		tglbtnI.addActionListener(new ActionListener() {
+		btnI.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnI.setEnabled(false);
 				comparaSecreto('I');
 			}
 		});
 
-		tglbtnJ.addActionListener(new ActionListener() {
+		btnJ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnJ.setEnabled(false);
 				comparaSecreto('J');
 			}
 		});
 
-		tglbtnK.addActionListener(new ActionListener() {
+		btnK.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnK.setEnabled(false);
 				comparaSecreto('K');
 			}
 		});
 
-		tglbtnL.addActionListener(new ActionListener() {
+		btnL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnL.setEnabled(false);
 				comparaSecreto('L');
 			}
 		});
 
-		tglbtnM.addActionListener(new ActionListener() {
+		btnM.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnM.setEnabled(false);
 				comparaSecreto('M');
 			}
 		});
 
-		tglbtnN.addActionListener(new ActionListener() {
+		btnN.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnN.setEnabled(false);
 				comparaSecreto('N');
 			}
 		});
 
-		tglbtnÑ.addActionListener(new ActionListener() {
+		btnÑ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnÑ.setEnabled(false);
 				comparaSecreto('Ñ');
 			}
 		});
 
-		tglbtnO.addActionListener(new ActionListener() {
+		btnO.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnO.setEnabled(false);
 				comparaSecreto('O');
 			}
 		});
 
-		tglbtnP.addActionListener(new ActionListener() {
+		btnP.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnP.setEnabled(false);
 				comparaSecreto('P');
 			}
 		});
 
-		tglbtnQ.addActionListener(new ActionListener() {
+		btnQ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnQ.setEnabled(false);
 				comparaSecreto('Q');
 			}
 		});
 
-		tglbtnR.addActionListener(new ActionListener() {
+		btnR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnR.setEnabled(false);
 				comparaSecreto('R');
 			}
 		});
 
-		tglbtnS.addActionListener(new ActionListener() {
+		btnS.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnS.setEnabled(false);
 				comparaSecreto('S');
+				
 			}
 		});
 
-		tglbtnT.addActionListener(new ActionListener() {
+		btnT.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnT.setEnabled(false);
 				comparaSecreto('T');
 			}
 		});
 
-		tglbtnU.addActionListener(new ActionListener() {
+		btnU.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnU.setEnabled(false);
 				comparaSecreto('U');
 			}
 		});
 
-		tglbtnV.addActionListener(new ActionListener() {
+		btnV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnV.setEnabled(false);
 				comparaSecreto('V');
 			}
 		});
 
-		tglbtnW.addActionListener(new ActionListener() {
+		btnW.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnW.setEnabled(false);
 				comparaSecreto('W');
 			}
 		});
 
-		tglbtnX.addActionListener(new ActionListener() {
+		btnX.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnX.setEnabled(false);
 				comparaSecreto('X');
 			}
 		});
 
-		tglbtnY.addActionListener(new ActionListener() {
+		btnY.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnY.setEnabled(false);
 				comparaSecreto('Y');
 			}
 		});
 
-		tglbtnZ.addActionListener(new ActionListener() {
+		btnZ.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnZ.setEnabled(false);
 				comparaSecreto('Z');
 			}
 		});
@@ -540,33 +568,33 @@ public class Partida {
 	// usarlo en mas de un sitio y para no alargar en exceso el listener de iniciar
 	// partida.
 	private void letras() {
-		tglbtnA.setSelected(false);
-		tglbtnB.setSelected(false);
-		tglbtnC.setSelected(false);
-		tglbtnD.setSelected(false);
-		tglbtnE.setSelected(false);
-		tglbtnF.setSelected(false);
-		tglbtnG.setSelected(false);
-		tglbtnH.setSelected(false);
-		tglbtnI.setSelected(false);
-		tglbtnJ.setSelected(false);
-		tglbtnK.setSelected(false);
-		tglbtnL.setSelected(false);
-		tglbtnM.setSelected(false);
-		tglbtnN.setSelected(false);
-		tglbtnÑ.setSelected(false);
-		tglbtnO.setSelected(false);
-		tglbtnP.setSelected(false);
-		tglbtnQ.setSelected(false);
-		tglbtnR.setSelected(false);
-		tglbtnS.setSelected(false);
-		tglbtnT.setSelected(false);
-		tglbtnU.setSelected(false);
-		tglbtnV.setSelected(false);
-		tglbtnW.setSelected(false);
-		tglbtnX.setSelected(false);
-		tglbtnY.setSelected(false);
-		tglbtnZ.setSelected(false);
+		btnA.setEnabled(true);
+		btnB.setEnabled(true);
+		btnC.setEnabled(true);
+		btnD.setEnabled(true);
+		btnE.setEnabled(true);
+		btnF.setEnabled(true);
+		btnG.setEnabled(true);
+		btnH.setEnabled(true);
+		btnI.setEnabled(true);
+		btnJ.setEnabled(true);
+		btnK.setEnabled(true);
+		btnL.setEnabled(true);
+		btnM.setEnabled(true);
+		btnN.setEnabled(true);
+		btnÑ.setEnabled(true);
+		btnO.setEnabled(true);
+		btnP.setEnabled(true);
+		btnQ.setEnabled(true);
+		btnR.setEnabled(true);
+		btnS.setEnabled(true);
+		btnT.setEnabled(true);
+		btnU.setEnabled(true);
+		btnV.setEnabled(true);
+		btnW.setEnabled(true);
+		btnX.setEnabled(true);
+		btnY.setEnabled(true);
+		btnZ.setEnabled(true);
 	}
 
 	// Este metodo rellenara de " " el string que representa la palabra secreta.
@@ -613,12 +641,10 @@ public class Partida {
 			numIntentos.setText(inteTxt);
 			numVidas.setText(vidTxt);
 		}
-
 		if (!texto.contains(" ")) {
-			JOptionPane.showMessageDialog(null, "Felicidades, has adivinado la palabra,\nseleccionando otra palabra.");
 			iniciarSecreto(list, false);
+			JOptionPane.showMessageDialog(null, "Felicidades, has adivinado la palabra,\nseleccionando otra palabra.");
 		}
-
 	}
 
 	// Este metodo inicia partida, se ha decidido combertirlo en un metodo aparte
@@ -626,8 +652,8 @@ public class Partida {
 	private void iniciarSecreto(ListaPalabras list, boolean vidas) {
 		Random r = new Random();
 		int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
-		setSecreto(secreto = list.getList(r1));
 		letras();
+		setSecreto(secreto = list.getList(r1));
 
 		if (vidas == true) {
 			numVidas.setText("5");
