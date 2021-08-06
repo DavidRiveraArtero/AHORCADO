@@ -79,7 +79,7 @@ public class Partida {
 	public Partida() {
 
 		initialize();
-		iniciarSecreto(list);
+		iniciarSecreto(list, true);
 
 	}
 
@@ -161,6 +161,7 @@ public class Partida {
 						.addComponent(ahorcado, GroupLayout.PREFERRED_SIZE, 439, GroupLayout.PREFERRED_SIZE))));
 
 		JTextPane txtpnIntentos = new JTextPane();
+		txtpnIntentos.setEditable(false);
 		txtpnIntentos.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnIntentos.setText("Intentos:");
 		txtpnIntentos.setBackground(Color.GRAY);
@@ -168,6 +169,7 @@ public class Partida {
 		ahorcado.add(txtpnIntentos);
 
 		numIntentos = new JTextPane();
+		numIntentos.setEditable(false);
 		numIntentos.setBackground(Color.GRAY);
 		numIntentos.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		numIntentos.setText("10");
@@ -175,6 +177,7 @@ public class Partida {
 		ahorcado.add(numIntentos);
 
 		JTextPane txtpnVidas = new JTextPane();
+		txtpnVidas.setEditable(false);
 		txtpnVidas.setText("Vidas:");
 		txtpnVidas.setBackground(Color.GRAY);
 		txtpnVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -182,6 +185,7 @@ public class Partida {
 		palabraSecreta.add(txtpnVidas);
 
 		numVidas = new JTextPane();
+		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
 		numVidas.setText("5");
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -329,15 +333,14 @@ public class Partida {
 		btnIniciar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				iniciarSecreto(list);
+				iniciarSecreto(list, true);
 			}
 		});
 
 		btnResolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(getSecreto());
-
+				gameOver();
 			}
 		});
 
@@ -579,7 +582,7 @@ public class Partida {
 	// Este metodo comprueba si la letra seleccionada se encuentra en la palabra
 	// secreta.
 	public void comparaSecreto(char letra) {
-		String texto = txtPalabra.getText(), inteTxt="", vidTxt="";
+		String texto = txtPalabra.getText(), inteTxt = "", vidTxt = "";
 		char[] tChar = texto.toCharArray();
 		boolean sale = false;
 		int inte = Integer.parseInt(numIntentos.getText()), vid = Integer.parseInt(numVidas.getText());
@@ -592,38 +595,54 @@ public class Partida {
 		}
 
 		if (sale == false) {
-			inte --;
+			inte--;
 		}
-		
+
 		if (inte == 0) {
 			inte = 10;
-			vid --;
+			vid--;
 		}
-		
-		if (vid > 0) {
-			JOptionPane.showMessageDialog(null, "Game Over\nIniciando otra partida.");
-			iniciarSecreto(list);
+
+		if (vid < 0) {
+			gameOver();
+		} else {
+			inteTxt = Integer.toString(inte);
+			vidTxt = Integer.toString(vid);
+			texto = String.valueOf(tChar);
+			txtPalabra.setText(texto);
+			numIntentos.setText(inteTxt);
+			numVidas.setText(vidTxt);
 		}
-		
-		inteTxt=Integer.toString(inte);
-		vidTxt=Integer.toString(vid);
-		texto = String.valueOf(tChar);
-		txtPalabra.setText(texto);
-		numIntentos.setText(inteTxt);
-		numVidas.setText(vidTxt);
-		
+
+		if (!texto.contains(" ")) {
+			JOptionPane.showMessageDialog(null, "Felicidades, has adivinado la palabra,\nseleccionando otra palabra.");
+			iniciarSecreto(list, false);
+		}
+
 	}
 
 	// Este metodo inicia partida, se ha decidido combertirlo en un metodo aparte
 	// por que se usa en mas de un sitio.
-	private void iniciarSecreto(ListaPalabras list) {
+	private void iniciarSecreto(ListaPalabras list, boolean vidas) {
 		Random r = new Random();
 		int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
 		setSecreto(secreto = list.getList(r1));
 		letras();
-		numVidas.setText("5");
-		numIntentos.setText("10");
+
+		if (vidas == true) {
+			numVidas.setText("5");
+			numIntentos.setText("10");
+		}
+
 		textoSecreto();
+	}
+
+	// Este modulo se ejecuta cuando tenemos un game over (El jugador pierde todas
+	// las vidas o se rinde.)
+	private void gameOver() {
+		JOptionPane.showMessageDialog(null,
+				"Game Over\nLa palabra secreta era: " + this.secreto + "\nIniciando otra partida.");
+		iniciarSecreto(list, true);
 	}
 
 	// Getters y setters para la partida.
