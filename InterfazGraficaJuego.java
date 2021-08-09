@@ -12,9 +12,12 @@ import javax.swing.* ;
 import PalabraRandom.PalabraRandom;
 
 public class InterfazGraficaJuego extends JFrame{
+	int vidas = 8;
+	
 	JTextField palabraSecreta;
 	JButton Resolver;
 	JTextPane NumVidas;
+	JLabel fotoS;
 	private JPanel contentPane;
 	//DEFINIMOS TODOS LOS BOTONES
 	JButton A;
@@ -46,8 +49,7 @@ public class InterfazGraficaJuego extends JFrame{
 	JButton Z;
 	private String sectro;
 	private String oculto;
-	
-	InterfazGraficaJuego(){
+	public InterfazGraficaJuego(){
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 	setVisible(true);
@@ -71,7 +73,7 @@ public class InterfazGraficaJuego extends JFrame{
 	palabraSecreta = new JTextField();
 	NumVidas = new JTextPane();
 	JLabel Tvidas = new JLabel("Vidas = ");
-	JPanel fotoS = new JPanel();
+	fotoS = new JLabel();
 	//TECLADO
 	A = new JButton("A");
 	B = new JButton("B");
@@ -194,6 +196,7 @@ public class InterfazGraficaJuego extends JFrame{
 	//ACCION BOTON INICIAR
 	Iniciar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+		
 			//CREAMOS ARRAYLIST
 			ArrayList PalabraSecreta = new ArrayList();
 			PalabraSecreta.add("CASA");
@@ -210,6 +213,12 @@ public class InterfazGraficaJuego extends JFrame{
 			textoSecreto();
 			Resolver.setEnabled(true);
 			
+			vidas=8;
+			String vidasString = vidas +"";
+			NumVidas.setText(vidasString);
+			ActivarBotones();
+			
+			
 		}
 		
 	});
@@ -217,7 +226,7 @@ public class InterfazGraficaJuego extends JFrame{
 	Resolver.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Te rendiste");
-			
+			ActivarBotones();
 		}
 	});
 	
@@ -228,14 +237,7 @@ public class InterfazGraficaJuego extends JFrame{
 			
 			char letra = 'A';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			A.setEnabled(false);
 		}
 	});
@@ -246,14 +248,7 @@ public class InterfazGraficaJuego extends JFrame{
 			
 			char letra = 'B';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			B.setEnabled(false);
 		}
 	});
@@ -262,16 +257,12 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'C';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+
+			compararSecreto(letra,vidas);
 			C.setEnabled(false);
+			
 		}
+		
 	});
 	
 	D.addActionListener(new ActionListener() {
@@ -280,14 +271,7 @@ public class InterfazGraficaJuego extends JFrame{
 			
 			char letra = 'D';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			D.setEnabled(false);
 		}
 	});
@@ -297,15 +281,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			
 			char letra = 'E';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			E.setEnabled(false);
 		}
 	});
@@ -314,15 +290,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'F';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			F.setEnabled(false);
 		}	
 	});
@@ -331,15 +299,8 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'G';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+
+			compararSecreto(letra,vidas);
 			G.setEnabled(false);
 		}	
 	});
@@ -348,15 +309,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'H';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			H.setEnabled(false);
 		}	
 	});
@@ -366,15 +319,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'I';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
-			I.setEnabled(false);
+			compararSecreto(letra,vidas);
 		}	
 	});
 	
@@ -383,14 +328,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'J';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			J.setEnabled(false);
 		}	
 	});
@@ -399,15 +337,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'K';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			K.setEnabled(false);
 		}	
 	});
@@ -416,15 +346,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'L';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			L.setEnabled(false);
 		}	
 	});
@@ -433,15 +355,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'M';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			M.setEnabled(false);
 		}	
 	});
@@ -450,15 +364,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'N';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			N.setEnabled(false);
 		}	
 	});
@@ -467,15 +373,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'Ñ';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			Ñ.setEnabled(false);
 		}	
 	});
@@ -485,15 +383,8 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'O';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
-			O.setEnabled(false);
+			compararSecreto(letra,vidas);
+			O.setEnabled(false); 
 		}	
 	});
 	
@@ -501,15 +392,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'P';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			P.setEnabled(false);
 		}	
 	});
@@ -518,15 +401,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'Q';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			Q.setEnabled(false);
 		}	
 	});
@@ -536,14 +411,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'R';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			R.setEnabled(false);
 		}	
 	});
@@ -552,15 +420,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'S';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			S.setEnabled(false);
 		}	
 	});
@@ -569,15 +429,8 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'T';
+			compararSecreto(letra,vidas);
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
 			T.setEnabled(false);
 		}	
 	});
@@ -587,14 +440,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'U';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			U.setEnabled(false);
 		}	
 	});
@@ -603,15 +449,7 @@ public class InterfazGraficaJuego extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String palabra = getSectro();
 			char letra = 'V';
-			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			V.setEnabled(false);
 		}	
 	});
@@ -621,31 +459,18 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'W';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			W.setEnabled(false);
 		}	
 	});
 	
 	X.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			System.out.print(vidas);
 			String palabra = getSectro();
 			char letra = 'X';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			X.setEnabled(false);
 		}	
 	});
@@ -655,14 +480,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'Y';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			Y.setEnabled(false);
 		}	
 	});
@@ -672,14 +490,7 @@ public class InterfazGraficaJuego extends JFrame{
 			String palabra = getSectro();
 			char letra = 'Z';
 			
-			for (int x= 0; x < palabra.length(); x++) {
-				if (letra == palabra.charAt(x)) {
-					
-					compararSecreto(letra);
-				}else {
-					compararSecreto(letra);
-				}
-			}
+			compararSecreto(letra,vidas);
 			Z.setEnabled(false);
 		}	
 	});
@@ -694,22 +505,48 @@ public class InterfazGraficaJuego extends JFrame{
 	}
 
 	//AÑADIMOS EL CONTENIDO A LA PALABRA OCULTA
-	public void compararSecreto(char letra) {
+	public void compararSecreto(char letra, int vidas) {
+		boolean estar = false;
 		String texto = palabraSecreta.getText();
+		int cont =8;
+		int contV=8;
+		int vidasT = Integer.parseInt(NumVidas.getText());
 		char[] tChar = texto.toCharArray();
-		boolean salir = false;
 		
 		for (int i =0; i<this.sectro.length();i++) {
 			if (sectro.charAt(i)==letra) {
 				tChar[i]=letra;
-				salir = true;
-			}else {
-				int vidas = 5;
-				vidas -=1;
-				String vidasString = vidas +"";
-				NumVidas.setText(vidasString);
+				estar = true;
 			}
 		}
+		if (vidasT <10) {
+			System.out.print(vidasT);
+			fotoS.setVisible(true);
+			fotoS.setIcon(new ImageIcon(InterfazGraficaJuego.class.getResource("/Imagenes/"+vidasT+".png")));
+				
+		}else {
+			fotoS.setVisible(false);	
+		}
+		
+		if (estar == false) {
+			vidasT--;	
+			
+			
+		}
+		
+		if (vidasT <= 0) {
+			DesactivarBotones(); 
+			JOptionPane.showMessageDialog(null, "Derrota");
+		}else {
+			String vidTxt = Integer.toString(vidasT);
+			NumVidas.setText(vidTxt);
+		}
+		
+		
+		
+		
+		
+		
 		texto = String.valueOf(tChar);
 		palabraSecreta.setText(texto);
 		
@@ -717,9 +554,71 @@ public class InterfazGraficaJuego extends JFrame{
 		if (!texto.contains(" ")) {
 			JOptionPane.showMessageDialog(null, "GANASTE");
 			Resolver.setEnabled(false);
-			
 		}
+		
+		
 	}
+	
+	public void ActivarBotones() {
+		A.setEnabled(true);
+		B.setEnabled(true);
+		C.setEnabled(true);
+		D.setEnabled(true);
+		E.setEnabled(true);
+		F.setEnabled(true);
+		G.setEnabled(true);
+		H.setEnabled(true);
+		I.setEnabled(true);
+		J.setEnabled(true);
+		K.setEnabled(true);
+		L.setEnabled(true);
+		M.setEnabled(true);
+		N.setEnabled(true);
+		Ñ.setEnabled(true);
+		O.setEnabled(true);
+		P.setEnabled(true);
+		Q.setEnabled(true);
+		R.setEnabled(true);
+		S.setEnabled(true);
+		T.setEnabled(true);
+		U.setEnabled(true);
+		V.setEnabled(true);
+		W.setEnabled(true);
+		X.setEnabled(true);
+		Y.setEnabled(true);
+		Z.setEnabled(true);
+	}
+	
+	public void DesactivarBotones() {
+		A.setEnabled(false);
+		B.setEnabled(false);
+		C.setEnabled(false);
+		D.setEnabled(false);
+		E.setEnabled(false);
+		F.setEnabled(false);
+		G.setEnabled(false);
+		H.setEnabled(false);
+		I.setEnabled(false);
+		J.setEnabled(false);
+		K.setEnabled(false);
+		L.setEnabled(false);
+		M.setEnabled(false);
+		N.setEnabled(false);
+		Ñ.setEnabled(false);
+		O.setEnabled(false);
+		P.setEnabled(false);
+		Q.setEnabled(false);
+		R.setEnabled(false);
+		S.setEnabled(false);
+		T.setEnabled(false);
+		U.setEnabled(false);
+		V.setEnabled(false);
+		W.setEnabled(false);
+		X.setEnabled(false);
+		Y.setEnabled(false);
+		Z.setEnabled(false);
+	}
+	
 	
 
 
@@ -738,6 +637,5 @@ public class InterfazGraficaJuego extends JFrame{
 	public void setOculto(String oculto) {
 		this.oculto = oculto;
 	}
-	
-	
+
 }
