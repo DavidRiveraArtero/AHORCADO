@@ -18,12 +18,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class Options {
 
 	public JFrame frame;
 	private JTextField textVidas;
 	private JPanel listaPalabras;
+	private int vid = 5;
 
 	/**
 	 * Launch the application.
@@ -153,17 +155,27 @@ public class Options {
 		btnMenu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				try {
+					vid = Integer.parseInt(textVidas.getText());
+				} catch (NumberFormatException evid) {
+					JOptionPane.showMessageDialog(null,
+							"Tienes que introducir un numero, manteniendo vidas por defecto.");
+				}
+
+				System.out.println(vid);
+				
 				try {
 					Main.window.setFrame(true);
-					Main.options.setFrame(false);;
-				} catch (Exception epartida) {
-					epartida.printStackTrace();
+					Main.options.setFrame(false);
+					;
+				} catch (Exception emenu) {
+					emenu.printStackTrace();
 				}
 
 			}
 		});
 
-		
 	}
 
 	// Getters y setters
@@ -173,5 +185,9 @@ public class Options {
 
 	public void setFrame(boolean frame) {
 		this.frame.setVisible(frame);
+	}
+	
+	public int getVid() {
+		return vid;
 	}
 }

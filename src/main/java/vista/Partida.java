@@ -18,6 +18,10 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class Partida {
 
@@ -51,8 +55,9 @@ public class Partida {
 	private JButton btnX;
 	private JButton btnY;
 	private JButton btnZ;
-	private JTextPane numIntentos;
 	private JTextPane numVidas;
+	private JLabel lblAhorcado;
+	int inte = 10, vid = 0;
 
 	/**
 	 * Launch the application.
@@ -74,10 +79,8 @@ public class Partida {
 	 * Create the application.
 	 */
 	public Partida() {
-
 		initialize();
 		iniciarSecreto(Main.list, true);
-
 	}
 
 	/**
@@ -150,41 +153,35 @@ public class Partida {
 		gl_menu.setHorizontalGroup(gl_menu.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menu.createSequentialGroup().addGap(32)
 						.addGroup(gl_menu.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnIniciar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+								.addComponent(btnResolver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnResolver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 300,
-										Short.MAX_VALUE))));
-		gl_menu.setVerticalGroup(gl_menu.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_menu.createSequentialGroup().addGap(7)
-						.addComponent(btnIniciar, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE).addGap(8)
-						.addComponent(btnResolver, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)));
+								.addComponent(btnIniciar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 153,
+										Short.MAX_VALUE))
+						.addGap(194)));
+		gl_menu.setVerticalGroup(gl_menu.createParallelGroup(Alignment.LEADING).addGroup(gl_menu.createSequentialGroup()
+				.addGap(9).addComponent(btnIniciar, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(btnResolver, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE).addGap(9)));
 		menu.setLayout(gl_menu);
 
-		JTextPane txtpnIntentos = new JTextPane();
-		txtpnIntentos.setEditable(false);
-		txtpnIntentos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtpnIntentos.setText("Intentos:");
-		txtpnIntentos.setBackground(Color.GRAY);
-
-		numIntentos = new JTextPane();
-		numIntentos.setEditable(false);
-		numIntentos.setBackground(Color.GRAY);
-		numIntentos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		numIntentos.setText("10");
+		lblAhorcado = new JLabel("");
+		lblAhorcado.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblAhorcado.setVisible(false);
 		GroupLayout gl_ahorcado = new GroupLayout(ahorcado);
-		gl_ahorcado.setHorizontalGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ahorcado.createSequentialGroup().addGap(9)
-						.addComponent(txtpnIntentos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(2).addComponent(numIntentos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)));
-		gl_ahorcado.setVerticalGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING).addGroup(gl_ahorcado
-				.createSequentialGroup().addGap(10)
-				.addGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtpnIntentos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addComponent(numIntentos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))));
+		gl_ahorcado.setHorizontalGroup(
+			gl_ahorcado.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ahorcado.createSequentialGroup()
+					.addGap(37)
+					.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(44, Short.MAX_VALUE))
+		);
+		gl_ahorcado.setVerticalGroup(
+			gl_ahorcado.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ahorcado.createSequentialGroup()
+					.addGap(59)
+					.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(28, Short.MAX_VALUE))
+		);
 		ahorcado.setLayout(gl_ahorcado);
 
 		JTextPane txtpnVidas = new JTextPane();
@@ -196,7 +193,7 @@ public class Partida {
 		numVidas = new JTextPane();
 		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
-		numVidas.setText("5");
+		numVidas.setText("" + Main.options.getVid());
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		GroupLayout gl_palabraSecreta = new GroupLayout(palabraSecreta);
 		gl_palabraSecreta.setHorizontalGroup(gl_palabraSecreta.createParallelGroup(Alignment.LEADING)
@@ -660,10 +657,9 @@ public class Partida {
 	// Este metodo comprueba si la letra seleccionada se encuentra en la palabra
 	// secreta.
 	public void comparaSecreto(char letra) {
-		String texto = txtPalabra.getText(), inteTxt = "", vidTxt = "";
+		String texto = txtPalabra.getText(), vidTxt = "";
 		char[] tChar = texto.toCharArray();
 		boolean sale = false;
-		int inte = Integer.parseInt(numIntentos.getText()), vid = Integer.parseInt(numVidas.getText());
 
 		for (int i = 0; i < this.secreto.length(); i++) {
 			if (secreto.charAt(i) == letra) {
@@ -680,15 +676,15 @@ public class Partida {
 			inte = 10;
 			vid--;
 		}
-
+		
+		dibujarAhorcado();
+		
 		if (vid < 0) {
 			gameOver();
 		} else {
-			inteTxt = Integer.toString(inte);
 			vidTxt = Integer.toString(vid);
 			texto = String.valueOf(tChar);
 			txtPalabra.setText(texto);
-			numIntentos.setText(inteTxt);
 			numVidas.setText(vidTxt);
 		}
 		if (!texto.contains("_")) {
@@ -699,16 +695,18 @@ public class Partida {
 
 	// Este metodo inicia partida, se ha decidido combertirlo en un metodo aparte
 	// por que se usa en mas de un sitio.
-	private void iniciarSecreto(ListaPalabras list, boolean vidas) {
+	public void iniciarSecreto(ListaPalabras list, boolean vidas) {
 		Random r = new Random();
 		int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
 		letras();
 		setSecreto(secreto = list.getList(r1));
 
 		if (vidas == true) {
-			numVidas.setText("5");
-			numIntentos.setText("10");
+			numVidas.setText("" + Main.options.getVid());
 		}
+
+		dibujarAhorcado();
+		vid = Integer.parseInt(numVidas.getText());
 
 		textoSecreto();
 	}
@@ -719,6 +717,15 @@ public class Partida {
 		JOptionPane.showMessageDialog(null,
 				"Game Over\nLa palabra secreta era: " + this.secreto + "\nIniciando otra partida.");
 		iniciarSecreto(Main.list, true);
+	}
+
+	private void dibujarAhorcado() {
+		if (inte < 10) {
+			lblAhorcado.setVisible(true);
+			lblAhorcado.setIcon(new ImageIcon(Partida.class.getResource("/img/" + inte + ".png")));
+		} else {
+			lblAhorcado.setVisible(false);
+		}
 	}
 
 	// Getters y setters para la partida.
