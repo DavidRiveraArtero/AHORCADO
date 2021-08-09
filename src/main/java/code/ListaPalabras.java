@@ -3,13 +3,13 @@ package code;
 import java.util.ArrayList;
 
 public class ListaPalabras {
-	
+
 	private ArrayList<String> list;
-	
+
 	public ListaPalabras() {
-		list=iniciarLista();
+		list = iniciarLista();
 	}
-	
+
 	// Este metodo iniciara la lista con las palabras por defecto.
 	private ArrayList<String> iniciarLista() {
 		ArrayList<String> list = new ArrayList<String>();
@@ -30,7 +30,7 @@ public class ListaPalabras {
 	public String getList(int num) {
 		return list.get(num);
 	}
-	
+
 	public int getListSize() {
 		return list.size() - 1;
 	}
@@ -38,7 +38,5 @@ public class ListaPalabras {
 	public void setList(String list) {
 		this.list.add(list.toUpperCase());
 	}
-	
-	
 
 }

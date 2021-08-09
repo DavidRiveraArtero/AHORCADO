@@ -55,9 +55,7 @@ public class Main {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
-		
-		
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -68,7 +66,7 @@ public class Main {
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addComponent(panel,
 				GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE));
 		panel.setLayout(null);
-		
+
 		JTextPane txtpnPor = new JTextPane();
 		txtpnPor.setText("Por:\n     David R.\n     Dídac M.");
 		txtpnPor.setOpaque(false);
@@ -76,7 +74,7 @@ public class Main {
 		txtpnPor.setFont(new Font("Tahoma", Font.BOLD, 30));
 		txtpnPor.setBounds(429, 65, 192, 161);
 		panel.add(txtpnPor);
-		
+
 		JTextPane txtpnElAhorcado = new JTextPane();
 		txtpnElAhorcado.setForeground(Color.WHITE);
 		txtpnElAhorcado.setOpaque(false);

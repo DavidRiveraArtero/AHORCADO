@@ -57,7 +57,7 @@ public class Partida {
 	private JTextPane numVidas;
 	private JLabel lblAhorcado;
 	private JButton btnPista;
-	private int inte = 0, inte2 = 0, vid = 0;
+	private int inte = 10, inte2 = 0, vid = 0;
 	private JTextPane txtpnPistas;
 	private JButton btnPedirPista;
 	private JButton btnVolverAlMenu;
@@ -187,14 +187,14 @@ public class Partida {
 		txtpnVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		numVidas = new JTextPane();
-		numVidas.setBounds(73, 11, 18, 27);
+		numVidas.setBounds(73, 11, 51, 27);
 		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
 		numVidas.setText("" + Main.options.getVid());
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		txtpnPistas = new JTextPane();
-		txtpnPistas.setBounds(109, 11, 62, 27);
+		txtpnPistas.setBounds(134, 11, 62, 27);
 		txtpnPistas.setText("Pistas:");
 		txtpnPistas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPistas.setEditable(false);
@@ -204,7 +204,7 @@ public class Partida {
 		btnPista.setEnabled(false);
 		btnPista.setForeground(Color.RED);
 		btnPista.setBackground(Color.RED);
-		btnPista.setBounds(181, 12, 33, 31);
+		btnPista.setBounds(206, 12, 33, 31);
 		btnPista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -819,6 +819,7 @@ public class Partida {
 
 		if (vidas == true) {
 			numVidas.setText("" + Main.options.getVid());
+			inte2 = inte;
 		}
 
 		dibujarAhorcado();
@@ -841,6 +842,8 @@ public class Partida {
 		selecDificultad();
 	}
 
+	// Este metodo mostrara por pantalla una representacion grafica dependiendo de
+	// los intentos que nos quedan.
 	private void dibujarAhorcado() {
 		if (inte2 < 10) {
 			lblAhorcado.setVisible(true);
