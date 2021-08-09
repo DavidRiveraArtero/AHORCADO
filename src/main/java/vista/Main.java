@@ -17,7 +17,7 @@ import javax.swing.JTextPane;
 
 public class Main {
 
-	public JFrame frame;
+	private JFrame frame;
 	static Main window = null;
 	static Partida partida = null;
 	static Options options = null;
@@ -43,9 +43,9 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
-		initialize();
 		options = new Options();
 		partida = new Partida();
+		initialize();
 	}
 
 	/**
@@ -56,7 +56,8 @@ public class Main {
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		
-
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -78,7 +79,6 @@ public class Main {
 		
 		JTextPane txtpnElAhorcado = new JTextPane();
 		txtpnElAhorcado.setForeground(Color.WHITE);
-//		txtpnElAhorcado.setBackground(new Color(255, 255, 255));
 		txtpnElAhorcado.setOpaque(false);
 		txtpnElAhorcado.setFont(new Font("Tahoma", Font.BOLD, 40));
 		txtpnElAhorcado.setText("El Ahorcado");
@@ -108,13 +108,12 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					partida.iniciarSecreto(list, true);
 					window.setFrame(false);
 					partida.setFrame(true);
+					partida.selecDificultad();
 				} catch (Exception epartida) {
 					epartida.printStackTrace();
 				}
-
 			}
 		});
 
@@ -125,10 +124,9 @@ public class Main {
 				try {
 					window.setFrame(false);
 					options.setFrame(true);
-				} catch (Exception epartida) {
-					epartida.printStackTrace();
+				} catch (Exception eopciones) {
+					eopciones.printStackTrace();
 				}
-
 			}
 		});
 

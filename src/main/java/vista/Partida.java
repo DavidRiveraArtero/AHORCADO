@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -15,13 +14,13 @@ import code.ListaPalabras;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
 
 public class Partida {
 
@@ -57,7 +56,17 @@ public class Partida {
 	private JButton btnZ;
 	private JTextPane numVidas;
 	private JLabel lblAhorcado;
-	int inte = 10, vid = 0;
+	private JButton btnPista;
+	private int inte = 0, inte2 = 0, vid = 0;
+	private JTextPane txtpnPistas;
+	private JButton btnPedirPista;
+	private JButton btnVolverAlMenu;
+	private JPanel fDifi;
+	private JRadioButton rdbtnPri;
+	private JRadioButton rdbtnInt;
+	private JRadioButton rdbtnAv;
+	private ButtonGroup group;
+	private JButton btnOk;
 
 	/**
 	 * Launch the application.
@@ -80,7 +89,7 @@ public class Partida {
 	 */
 	public Partida() {
 		initialize();
-		iniciarSecreto(Main.list, true);
+		selecDificultad();
 	}
 
 	/**
@@ -94,302 +103,308 @@ public class Partida {
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 694, 471);
 		panel.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(panel);
 
 		JPanel ahorcado = new JPanel();
+		ahorcado.setBounds(401, 11, 273, 439);
 		ahorcado.setBorder(new LineBorder(Color.BLACK));
 		ahorcado.setBackground(Color.GRAY);
 
 		JPanel menu = new JPanel();
+		menu.setBounds(10, 11, 381, 118);
 		menu.setBackground(Color.GRAY);
 		menu.setBorder(new LineBorder(Color.BLACK));
 
 		JButton btnIniciar = new JButton("Iniciar Juego");
+		btnIniciar.setBounds(25, 8, 153, 46);
 		btnIniciar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
 		JButton btnResolver = new JButton("Resolver Juego");
+		btnResolver.setBounds(25, 62, 153, 46);
 		btnResolver.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
 		JPanel palabraSecreta = new JPanel();
+		palabraSecreta.setBounds(10, 140, 381, 311);
 		palabraSecreta.setBorder(new LineBorder(Color.BLACK));
 		palabraSecreta.setBackground(Color.GRAY);
 
 		JTextPane txtpnPalabraSecreta = new JTextPane();
+		txtpnPalabraSecreta.setBounds(10, 49, 158, 31);
 		txtpnPalabraSecreta.setEditable(false);
 		txtpnPalabraSecreta.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPalabraSecreta.setText("Palabra secreta");
 		txtpnPalabraSecreta.setBackground(Color.GRAY);
 
 		txtPalabra = new JTextField();
+		txtPalabra.setBounds(10, 81, 300, 38);
 		txtPalabra.setEditable(false);
 		txtPalabra.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtPalabra.setForeground(Color.WHITE);
 		txtPalabra.setBackground(Color.BLACK);
 		txtPalabra.setColumns(10);
 
-		JPanel letras = new JPanel();
-		letras.setBorder(new LineBorder(Color.BLACK));
-		letras.setBackground(Color.GRAY);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
-				.createSequentialGroup().addGap(10)
-				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(menu, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-						.addComponent(palabraSecreta, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-						.addComponent(letras, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE))
-				.addGap(10).addComponent(ahorcado, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
-				.createSequentialGroup().addGap(11)
-				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel.createSequentialGroup()
-						.addComponent(menu, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(palabraSecreta, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addGap(11).addComponent(letras, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-						.addComponent(ahorcado, GroupLayout.PREFERRED_SIZE, 439, GroupLayout.PREFERRED_SIZE))));
-		GroupLayout gl_menu = new GroupLayout(menu);
-		gl_menu.setHorizontalGroup(gl_menu.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_menu.createSequentialGroup().addGap(32)
-						.addGroup(gl_menu.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnResolver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnIniciar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 153,
-										Short.MAX_VALUE))
-						.addGap(194)));
-		gl_menu.setVerticalGroup(gl_menu.createParallelGroup(Alignment.LEADING).addGroup(gl_menu.createSequentialGroup()
-				.addGap(9).addComponent(btnIniciar, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(btnResolver, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE).addGap(9)));
-		menu.setLayout(gl_menu);
+		btnPedirPista = new JButton("Pedir Pista");
+		btnPedirPista.setBounds(203, 62, 153, 46);
+		btnPedirPista.setFont(new Font("Tahoma", Font.PLAIN, 17));
+
+		btnVolverAlMenu = new JButton("Volver al Menu");
+		btnVolverAlMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnVolverAlMenu.setBounds(203, 8, 153, 46);
+		btnVolverAlMenu.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		menu.setLayout(null);
+		menu.add(btnResolver);
+		menu.add(btnIniciar);
+		menu.add(btnPedirPista);
+		menu.add(btnVolverAlMenu);
 
 		lblAhorcado = new JLabel("");
 		lblAhorcado.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblAhorcado.setVisible(false);
 		GroupLayout gl_ahorcado = new GroupLayout(ahorcado);
-		gl_ahorcado.setHorizontalGroup(
-			gl_ahorcado.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ahorcado.createSequentialGroup()
-					.addGap(37)
-					.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(44, Short.MAX_VALUE))
-		);
-		gl_ahorcado.setVerticalGroup(
-			gl_ahorcado.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ahorcado.createSequentialGroup()
-					.addGap(59)
-					.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(28, Short.MAX_VALUE))
-		);
+		gl_ahorcado.setHorizontalGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ahorcado.createSequentialGroup().addGap(37)
+						.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(44, Short.MAX_VALUE)));
+		gl_ahorcado.setVerticalGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ahorcado.createSequentialGroup().addGap(59)
+						.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(28, Short.MAX_VALUE)));
 		ahorcado.setLayout(gl_ahorcado);
 
 		JTextPane txtpnVidas = new JTextPane();
+		txtpnVidas.setBounds(10, 11, 62, 27);
 		txtpnVidas.setEditable(false);
 		txtpnVidas.setText("Vidas:");
 		txtpnVidas.setBackground(Color.GRAY);
 		txtpnVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		numVidas = new JTextPane();
+		numVidas.setBounds(73, 11, 18, 27);
 		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
 		numVidas.setText("" + Main.options.getVid());
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		GroupLayout gl_palabraSecreta = new GroupLayout(palabraSecreta);
-		gl_palabraSecreta.setHorizontalGroup(gl_palabraSecreta.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_palabraSecreta.createSequentialGroup().addGap(9)
-						.addGroup(gl_palabraSecreta.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_palabraSecreta.createSequentialGroup()
-										.addComponent(txtpnVidas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(1).addComponent(numVidas, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addComponent(txtpnPalabraSecreta, GroupLayout.PREFERRED_SIZE, 158,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtPalabra, GroupLayout.PREFERRED_SIZE, 300,
-										GroupLayout.PREFERRED_SIZE))));
-		gl_palabraSecreta.setVerticalGroup(gl_palabraSecreta.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_palabraSecreta.createSequentialGroup().addGap(10)
-						.addGroup(gl_palabraSecreta.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtpnVidas, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-								.addComponent(numVidas, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-						.addGap(11)
-						.addComponent(txtpnPalabraSecreta, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(1)
-						.addComponent(txtPalabra, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)));
-		palabraSecreta.setLayout(gl_palabraSecreta);
+
+		txtpnPistas = new JTextPane();
+		txtpnPistas.setBounds(109, 11, 62, 27);
+		txtpnPistas.setText("Pistas:");
+		txtpnPistas.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtpnPistas.setEditable(false);
+		txtpnPistas.setBackground(Color.GRAY);
+
+		btnPista = new JButton("");
+		btnPista.setEnabled(false);
+		btnPista.setForeground(Color.RED);
+		btnPista.setBackground(Color.RED);
+		btnPista.setBounds(181, 12, 33, 31);
+		btnPista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		palabraSecreta.setLayout(null);
+
+		fDifi = new JPanel();
+		fDifi.setBorder(new LineBorder(Color.BLACK));
+		fDifi.setBackground(Color.GRAY);
+		fDifi.setBounds(0, 0, 381, 311);
+		palabraSecreta.add(fDifi);
+		fDifi.setLayout(null);
+
+		JTextPane txtpnDificultad = new JTextPane();
+		txtpnDificultad.setForeground(Color.WHITE);
+		txtpnDificultad.setText("Dificultad:");
+		txtpnDificultad.setFont(new Font("Tahoma", Font.BOLD, 30));
+		txtpnDificultad.setBackground(Color.GRAY);
+		txtpnDificultad.setBounds(10, 37, 163, 43);
+		fDifi.add(txtpnDificultad);
+
+		rdbtnPri = new JRadioButton("Principiante");
+		rdbtnPri.setSelected(true);
+		rdbtnPri.setBackground(Color.GRAY);
+		rdbtnPri.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnPri.setBounds(20, 87, 253, 31);
+		fDifi.add(rdbtnPri);
+
+		rdbtnInt = new JRadioButton("Intermedio");
+		rdbtnInt.setBackground(Color.GRAY);
+		rdbtnInt.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnInt.setBounds(20, 121, 253, 31);
+		fDifi.add(rdbtnInt);
+
+		rdbtnAv = new JRadioButton("Avanzado");
+		rdbtnAv.setBackground(Color.GRAY);
+		rdbtnAv.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		rdbtnAv.setBounds(20, 155, 253, 31);
+		fDifi.add(rdbtnAv);
+
+		group = new ButtonGroup();
+		group.add(rdbtnPri);
+		group.add(rdbtnInt);
+		group.add(rdbtnAv);
+
+		btnOk = new JButton("ok");
+		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnOk.setBounds(113, 232, 152, 43);
+		fDifi.add(btnOk);
+		palabraSecreta.add(txtpnVidas);
+		palabraSecreta.add(numVidas);
+		palabraSecreta.add(txtpnPistas);
+		palabraSecreta.add(btnPista);
+		palabraSecreta.add(txtpnPalabraSecreta);
+		palabraSecreta.add(txtPalabra);
+		panel.setLayout(null);
+		panel.add(menu);
+		panel.add(palabraSecreta);
+
+		JPanel letras = new JPanel();
+		letras.setBounds(0, 136, 381, 175);
+		palabraSecreta.add(letras);
+		letras.setBorder(new LineBorder(Color.BLACK));
+		letras.setBackground(Color.GRAY);
 
 		btnA = new JButton("A");
+		btnA.setBounds(11, 4, 50, 30);
 		btnA.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnB = new JButton("B");
+		btnB.setBounds(72, 4, 50, 30);
 		btnB.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnC = new JButton("C");
+		btnC.setBounds(133, 4, 50, 30);
 		btnC.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnD = new JButton("D");
+		btnD.setBounds(194, 4, 50, 30);
 		btnD.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnE = new JButton("E");
+		btnE.setBounds(255, 4, 50, 30);
 		btnE.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnG = new JButton("G");
+		btnG.setBounds(11, 38, 50, 30);
 		btnG.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnH = new JButton("H");
+		btnH.setBounds(72, 38, 50, 30);
 		btnH.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnI = new JButton("I");
+		btnI.setBounds(133, 38, 50, 30);
 		btnI.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnJ = new JButton("J");
+		btnJ.setBounds(194, 38, 50, 30);
 		btnJ.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnK = new JButton("K");
+		btnK.setBounds(255, 38, 50, 30);
 		btnK.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnM = new JButton("M");
+		btnM.setBounds(11, 72, 50, 30);
 		btnM.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnN = new JButton("N");
+		btnN.setBounds(72, 72, 50, 30);
 		btnN.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnÑ = new JButton("Ñ");
+		btnÑ.setBounds(133, 72, 50, 30);
 		btnÑ.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnO = new JButton("O");
+		btnO.setBounds(194, 72, 50, 30);
 		btnO.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnP = new JButton("P");
+		btnP.setBounds(255, 72, 50, 30);
 		btnP.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnF = new JButton("F");
+		btnF.setBounds(316, 4, 50, 30);
 		btnF.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnW = new JButton("W");
+		btnW.setBounds(72, 140, 50, 30);
 		btnW.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnX = new JButton("X");
+		btnX.setBounds(133, 140, 50, 30);
 		btnX.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnY = new JButton("Y");
+		btnY.setBounds(194, 140, 50, 30);
 		btnY.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnZ = new JButton("Z");
+		btnZ.setBounds(255, 140, 50, 30);
 		btnZ.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnR = new JButton("R");
+		btnR.setBounds(21, 106, 50, 30);
 		btnR.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnS = new JButton("S");
+		btnS.setBounds(92, 106, 50, 30);
 		btnS.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnT = new JButton("T");
+		btnT.setBounds(163, 106, 50, 30);
 		btnT.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnU = new JButton("U");
+		btnU.setBounds(234, 106, 50, 30);
 		btnU.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnV = new JButton("V");
+		btnV.setBounds(305, 106, 50, 30);
 		btnV.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnQ = new JButton("Q");
+		btnQ.setBounds(316, 72, 50, 30);
 		btnQ.setBorder(new LineBorder(Color.DARK_GRAY));
 
 		btnL = new JButton("L");
+		btnL.setBounds(316, 38, 50, 30);
 		btnL.setBorder(new LineBorder(Color.DARK_GRAY));
-		GroupLayout gl_letras = new GroupLayout(letras);
-		gl_letras.setHorizontalGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_letras.createSequentialGroup().addGap(10)
-						.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnB, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnC, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnD, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnE, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnF, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_letras.createSequentialGroup().addGap(10)
-						.addComponent(btnG, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnH, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnI, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnJ, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnK, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnL, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_letras.createSequentialGroup().addGap(10)
-						.addComponent(btnM, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnN, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnÑ, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnO, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnP, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnQ, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_letras.createSequentialGroup().addGap(20)
-						.addComponent(btnR, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(21)
-						.addComponent(btnS, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(21)
-						.addComponent(btnT, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(21)
-						.addComponent(btnU, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(21)
-						.addComponent(btnV, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_letras.createSequentialGroup().addGap(71)
-						.addComponent(btnW, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnX, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnY, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(11)
-						.addComponent(btnZ, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)));
-		gl_letras.setVerticalGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_letras.createSequentialGroup().addGap(2)
-						.addGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnA, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnB, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnC, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnD, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnE, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnF, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addGap(3)
-						.addGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnG, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnH, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnI, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnJ, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnK, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnL, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addGap(3)
-						.addGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnM, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnN, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnÑ, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnO, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnP, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnQ, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addGap(3)
-						.addGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnR, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnS, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnT, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnU, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnV, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addGap(3)
-						.addGroup(gl_letras.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnW, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnX, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnY, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnZ, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))));
-		letras.setLayout(gl_letras);
-		panel.setLayout(gl_panel);
-
-		// Acciones de los botones.
-
-		btnIniciar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				iniciarSecreto(Main.list, true);
-			}
-		});
-
-		btnResolver.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gameOver();
-			}
-		});
+		letras.setLayout(null);
+		letras.add(btnA);
+		letras.add(btnB);
+		letras.add(btnC);
+		letras.add(btnD);
+		letras.add(btnE);
+		letras.add(btnF);
+		letras.add(btnG);
+		letras.add(btnH);
+		letras.add(btnI);
+		letras.add(btnJ);
+		letras.add(btnK);
+		letras.add(btnL);
+		letras.add(btnM);
+		letras.add(btnN);
+		letras.add(btnÑ);
+		letras.add(btnO);
+		letras.add(btnP);
+		letras.add(btnQ);
+		letras.add(btnR);
+		letras.add(btnS);
+		letras.add(btnT);
+		letras.add(btnU);
+		letras.add(btnV);
+		letras.add(btnW);
+		letras.add(btnX);
+		letras.add(btnY);
+		letras.add(btnZ);
 
 		btnA.addActionListener(new ActionListener() {
 			@Override
@@ -607,6 +622,73 @@ public class Partida {
 				comparaSecreto('Z');
 			}
 		});
+		panel.add(ahorcado);
+
+		// Acciones de los botones.
+
+		btnIniciar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selecDificultad();
+			}
+		});
+
+		btnResolver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameOver();
+			}
+		});
+
+		// Evento boton volver al menu.
+		btnVolverAlMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Main.partida.setFrame(false);
+					Main.window.setFrame(true);
+				} catch (Exception epartida) {
+					epartida.printStackTrace();
+				}
+
+			}
+		});
+
+		// Evento dificultad principiante.
+		rdbtnPri.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				inte = 10;
+				inte2 = inte;
+			}
+		});
+
+		// Evento dificultad intermedia.
+		rdbtnInt.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				inte = 8;
+				inte2 = inte;
+			}
+		});
+
+		// Evento dificultad avanzada.
+		rdbtnAv.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				inte = 6;
+				inte2 = inte;
+			}
+		});
+
+		// Evento boton ok.
+		btnOk.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fDifi.setVisible(false);
+				iniciarSecreto(Main.list, true);
+			}
+		});
 
 	}
 
@@ -614,7 +696,7 @@ public class Partida {
 	// seleccionadas, se ha decidido hacerlo un metodo aparte por si fuera necesario
 	// usarlo en mas de un sitio y para no alargar en exceso el listener de iniciar
 	// partida.
-	private void letras() {
+	private void letrasOn() {
 		btnA.setEnabled(true);
 		btnB.setEnabled(true);
 		btnC.setEnabled(true);
@@ -644,6 +726,40 @@ public class Partida {
 		btnZ.setEnabled(true);
 	}
 
+	// Este metodo apaga letras para que dejen de estar
+	// seleccionadas, se ha decidido hacerlo un metodo aparte por si fuera necesario
+	// usarlo en mas de un sitio y para no alargar en exceso el listener de iniciar
+	// partida.
+	private void letrasOff() {
+		btnA.setEnabled(false);
+		btnB.setEnabled(false);
+		btnC.setEnabled(false);
+		btnD.setEnabled(false);
+		btnE.setEnabled(false);
+		btnF.setEnabled(false);
+		btnG.setEnabled(false);
+		btnH.setEnabled(false);
+		btnI.setEnabled(false);
+		btnJ.setEnabled(false);
+		btnK.setEnabled(false);
+		btnL.setEnabled(false);
+		btnM.setEnabled(false);
+		btnN.setEnabled(false);
+		btnÑ.setEnabled(false);
+		btnO.setEnabled(false);
+		btnP.setEnabled(false);
+		btnQ.setEnabled(false);
+		btnR.setEnabled(false);
+		btnS.setEnabled(false);
+		btnT.setEnabled(false);
+		btnU.setEnabled(false);
+		btnV.setEnabled(false);
+		btnW.setEnabled(false);
+		btnX.setEnabled(false);
+		btnY.setEnabled(false);
+		btnZ.setEnabled(false);
+	}
+
 	// Este metodo rellenara de " " el string que representa la palabra secreta.
 	private void textoSecreto() {
 		String texto1 = "", texto2 = "_";
@@ -656,7 +772,7 @@ public class Partida {
 
 	// Este metodo comprueba si la letra seleccionada se encuentra en la palabra
 	// secreta.
-	public void comparaSecreto(char letra) {
+	private void comparaSecreto(char letra) {
 		String texto = txtPalabra.getText(), vidTxt = "";
 		char[] tChar = texto.toCharArray();
 		boolean sale = false;
@@ -669,16 +785,16 @@ public class Partida {
 		}
 
 		if (sale == false) {
-			inte--;
+			inte2--;
 		}
 
-		if (inte == 0) {
-			inte = 10;
+		if (inte2 == 0) {
+			inte2 = inte;
 			vid--;
 		}
-		
+
 		dibujarAhorcado();
-		
+
 		if (vid < 0) {
 			gameOver();
 		} else {
@@ -698,7 +814,7 @@ public class Partida {
 	public void iniciarSecreto(ListaPalabras list, boolean vidas) {
 		Random r = new Random();
 		int r1 = r.nextInt((list.getListSize() - 0) + 1) + 0;
-		letras();
+		letrasOn();
 		setSecreto(secreto = list.getList(r1));
 
 		if (vidas == true) {
@@ -711,6 +827,12 @@ public class Partida {
 		textoSecreto();
 	}
 
+	// Este metodo nos permite decidir en que dificultad queremos jugar.
+	public void selecDificultad() {
+		letrasOff();
+		fDifi.setVisible(true);
+	}
+
 	// Este modulo se ejecuta cuando tenemos un game over (El jugador pierde todas
 	// las vidas o se rinde.)
 	private void gameOver() {
@@ -720,9 +842,9 @@ public class Partida {
 	}
 
 	private void dibujarAhorcado() {
-		if (inte < 10) {
+		if (inte2 < 10) {
 			lblAhorcado.setVisible(true);
-			lblAhorcado.setIcon(new ImageIcon(Partida.class.getResource("/img/" + inte + ".png")));
+			lblAhorcado.setIcon(new ImageIcon(Partida.class.getResource("/img/" + inte2 + ".png")));
 		} else {
 			lblAhorcado.setVisible(false);
 		}
@@ -735,6 +857,14 @@ public class Partida {
 
 	public String getSecreto() {
 		return secreto;
+	}
+
+	public int getInte() {
+		return inte;
+	}
+
+	public void setInte(int inte) {
+		this.inte = inte;
 	}
 
 	public JFrame getFrame() {

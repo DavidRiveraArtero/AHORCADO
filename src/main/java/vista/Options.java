@@ -151,7 +151,7 @@ public class Options {
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// Evento boton opciones.
+		// Evento boton volver al menu.
 		btnMenu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -164,7 +164,7 @@ public class Options {
 				}
 
 				System.out.println(vid);
-				
+
 				try {
 					Main.window.setFrame(true);
 					Main.options.setFrame(false);
@@ -172,7 +172,6 @@ public class Options {
 				} catch (Exception emenu) {
 					emenu.printStackTrace();
 				}
-
 			}
 		});
 
@@ -186,7 +185,7 @@ public class Options {
 	public void setFrame(boolean frame) {
 		this.frame.setVisible(frame);
 	}
-	
+
 	public int getVid() {
 		return vid;
 	}

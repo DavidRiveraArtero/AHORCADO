@@ -12,11 +12,12 @@ public class App {
 	static Main main = null;
 	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					main = new Main();
-					main.frame.setVisible(true);
+					main.setFrame(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
