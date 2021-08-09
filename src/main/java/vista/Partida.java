@@ -838,7 +838,7 @@ public class Partida {
 	private void gameOver() {
 		JOptionPane.showMessageDialog(null,
 				"Game Over\nLa palabra secreta era: " + this.secreto + "\nIniciando otra partida.");
-		iniciarSecreto(Main.list, true);
+		selecDificultad();
 	}
 
 	private void dibujarAhorcado() {
