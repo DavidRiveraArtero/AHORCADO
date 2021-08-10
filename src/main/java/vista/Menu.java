@@ -19,9 +19,14 @@ public class Menu {
 
 	private JFrame frame;
 	static Menu window = null;
-	static Partida partida = null;
-	static Options options = null;
+	public static Partida partida = null;
+	public static Options options = null;
 	public static ListaPalabras list = new ListaPalabras();
+	public JButton btnIniciarPartida, btnOpciones;
+	private GroupLayout groupLayout;
+	private JTextPane txtpnPor, txtpnElAhorcado;
+	private JLabel lblNewLabel;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -56,9 +61,9 @@ public class Menu {
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 704, GroupLayout.PREFERRED_SIZE)
@@ -67,7 +72,7 @@ public class Menu {
 				GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE));
 		panel.setLayout(null);
 
-		JTextPane txtpnPor = new JTextPane();
+		txtpnPor = new JTextPane();
 		txtpnPor.setText("Por:\n     David R.\n     Dídac M.");
 		txtpnPor.setOpaque(false);
 		txtpnPor.setForeground(Color.WHITE);
@@ -75,7 +80,7 @@ public class Menu {
 		txtpnPor.setBounds(429, 65, 192, 161);
 		panel.add(txtpnPor);
 
-		JTextPane txtpnElAhorcado = new JTextPane();
+		txtpnElAhorcado  = new JTextPane();
 		txtpnElAhorcado.setForeground(Color.WHITE);
 		txtpnElAhorcado.setOpaque(false);
 		txtpnElAhorcado.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -83,17 +88,17 @@ public class Menu {
 		txtpnElAhorcado.setBounds(429, 11, 246, 55);
 		panel.add(txtpnElAhorcado);
 
-		JButton btnIniciarPartida = new JButton("Iniciar Partida");
+		btnIniciarPartida = new JButton("Iniciar Partida");
 		btnIniciarPartida.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnIniciarPartida.setBounds(472, 343, 203, 48);
 		panel.add(btnIniciarPartida);
 
-		JButton btnOpciones = new JButton("Opciones");
+		btnOpciones = new JButton("Opciones");
 		btnOpciones.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnOpciones.setBounds(472, 402, 203, 48);
 		panel.add(btnOpciones);
 
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Menu.class.getResource("/img/soga.jpg")));
 		lblNewLabel.setBounds(0, 0, 694, 472);
 		panel.add(lblNewLabel);

@@ -25,48 +25,18 @@ import javax.swing.JRadioButton;
 public class Partida {
 
 	public JFrame frame;
+	private JPanel fDifi, panel, ahorcado, menu, palabraSecreta;
 	private JTextField txtPalabra;
 	private String secreto;
-	private JButton btnA;
-	private JButton btnB;
-	private JButton btnC;
-	private JButton btnD;
-	private JButton btnE;
-	private JButton btnF;
-	private JButton btnG;
-	private JButton btnH;
-	private JButton btnI;
-	private JButton btnJ;
-	private JButton btnK;
-	private JButton btnL;
-	private JButton btnM;
-	private JButton btnN;
-	private JButton btnÑ;
-	private JButton btnO;
-	private JButton btnP;
-	private JButton btnQ;
-	private JButton btnR;
-	private JButton btnS;
-	private JButton btnT;
-	private JButton btnU;
-	private JButton btnV;
-	private JButton btnW;
-	private JButton btnX;
-	private JButton btnY;
-	private JButton btnZ;
-	private JTextPane numVidas;
+	private JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnÑ, btnO,
+			btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ, btnPista, btnPedirPista, btnVolverAlMenu,
+			btnOk, btnIniciar, btnResolver;
+	private JTextPane numVidas, txtpnPistas, txtpnPalabraSecreta, txtpnVidas;
 	private JLabel lblAhorcado;
-	private JButton btnPista;
 	private int inte = 10, inte2 = 0, vid = 0;
-	private JTextPane txtpnPistas;
-	private JButton btnPedirPista;
-	private JButton btnVolverAlMenu;
-	private JPanel fDifi;
-	private JRadioButton rdbtnPri;
-	private JRadioButton rdbtnInt;
-	private JRadioButton rdbtnAv;
+	private JRadioButton rdbtnPri, rdbtnInt, rdbtnAv;
 	private ButtonGroup group;
-	private JButton btnOk;
+	private GroupLayout gl_ahorcado;
 
 	/**
 	 * Launch the application.
@@ -105,35 +75,35 @@ public class Partida {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(0, 0, 694, 471);
 		panel.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(panel);
 
-		JPanel ahorcado = new JPanel();
+		ahorcado = new JPanel();
 		ahorcado.setBounds(401, 11, 273, 439);
 		ahorcado.setBorder(new LineBorder(Color.BLACK));
 		ahorcado.setBackground(Color.GRAY);
 
-		JPanel menu = new JPanel();
+		menu = new JPanel();
 		menu.setBounds(10, 11, 381, 118);
 		menu.setBackground(Color.GRAY);
 		menu.setBorder(new LineBorder(Color.BLACK));
 
-		JButton btnIniciar = new JButton("Iniciar Juego");
+		btnIniciar = new JButton("Iniciar Juego");
 		btnIniciar.setBounds(25, 8, 153, 46);
 		btnIniciar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
-		JButton btnResolver = new JButton("Resolver Juego");
+		btnResolver = new JButton("Resolver Juego");
 		btnResolver.setBounds(25, 62, 153, 46);
 		btnResolver.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
-		JPanel palabraSecreta = new JPanel();
+		palabraSecreta = new JPanel();
 		palabraSecreta.setBounds(10, 140, 381, 311);
 		palabraSecreta.setBorder(new LineBorder(Color.BLACK));
 		palabraSecreta.setBackground(Color.GRAY);
 
-		JTextPane txtpnPalabraSecreta = new JTextPane();
+		txtpnPalabraSecreta = new JTextPane();
 		txtpnPalabraSecreta.setBounds(10, 49, 158, 31);
 		txtpnPalabraSecreta.setEditable(false);
 		txtpnPalabraSecreta.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -168,7 +138,7 @@ public class Partida {
 		lblAhorcado = new JLabel("");
 		lblAhorcado.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblAhorcado.setVisible(false);
-		GroupLayout gl_ahorcado = new GroupLayout(ahorcado);
+		gl_ahorcado = new GroupLayout(ahorcado);
 		gl_ahorcado.setHorizontalGroup(gl_ahorcado.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ahorcado.createSequentialGroup().addGap(37)
 						.addComponent(lblAhorcado, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
@@ -179,7 +149,7 @@ public class Partida {
 						.addContainerGap(28, Short.MAX_VALUE)));
 		ahorcado.setLayout(gl_ahorcado);
 
-		JTextPane txtpnVidas = new JTextPane();
+		txtpnVidas = new JTextPane();
 		txtpnVidas.setBounds(10, 11, 62, 27);
 		txtpnVidas.setEditable(false);
 		txtpnVidas.setText("Vidas:");
@@ -263,6 +233,7 @@ public class Partida {
 		panel.setLayout(null);
 		panel.add(menu);
 		panel.add(palabraSecreta);
+		panel.add(ahorcado);
 
 		JPanel letras = new JPanel();
 		letras.setBounds(0, 136, 381, 175);
@@ -406,6 +377,7 @@ public class Partida {
 		letras.add(btnY);
 		letras.add(btnZ);
 
+		// Aqui empiezan los eventos de las letras.
 		btnA.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -622,7 +594,6 @@ public class Partida {
 				comparaSecreto('Z');
 			}
 		});
-		panel.add(ahorcado);
 
 		// Acciones de los botones.
 
@@ -645,7 +616,7 @@ public class Partida {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Menu.partida.setFrame(false);
+					frame.setVisible(false);
 					Menu.window.setFrame(true);
 				} catch (Exception epartida) {
 					epartida.printStackTrace();

@@ -23,18 +23,15 @@ import javax.swing.JOptionPane;
 public class Options {
 
 	public JFrame frame;
-	private JTextField textPalabra;
-	private JPanel listaPalabras;
+	private JTextField textPalabra, textVidas;
+	private JPanel listaPalabras, añadirPalabra, vidas;
 	private int vid = 5;
-	private JTextField textVidas;
-	private JPanel añadirPalabra;
 	private JButton btnMenu;
-	private JPanel vidas;
-	private JTextPane txtpnNVidas_1;
-	private JTextPane txtpnListaDePalabras;
+	private JTextPane txtpnNVidas_1, txtpnListaDePalabras;
 	private JButton btnAdd;
 	private DefaultListModel<String> listModel;
 	private JList<String> list;
+	private GroupLayout gl_vidas, gl_listaPalabras;
 
 	/**
 	 * Launch the application.
@@ -96,7 +93,7 @@ public class Options {
 		textVidas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textVidas.setColumns(10);
 		textVidas.setBackground(Color.LIGHT_GRAY);
-		GroupLayout gl_vidas = new GroupLayout(vidas);
+		gl_vidas = new GroupLayout(vidas);
 		gl_vidas.setHorizontalGroup(gl_vidas.createParallelGroup(Alignment.TRAILING).addGap(0, 322, Short.MAX_VALUE)
 				.addGroup(gl_vidas.createSequentialGroup().addContainerGap()
 						.addComponent(txtpnNVidas_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
@@ -123,7 +120,7 @@ public class Options {
 		listModel = new DefaultListModel<String>();
 		list = new JList<String>(listModel);
 		list.setBackground(Color.GRAY);
-		GroupLayout gl_listaPalabras = new GroupLayout(listaPalabras);
+		gl_listaPalabras = new GroupLayout(listaPalabras);
 		gl_listaPalabras.setHorizontalGroup(gl_listaPalabras.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_listaPalabras.createSequentialGroup().addContainerGap()
 						.addGroup(gl_listaPalabras.createParallelGroup(Alignment.LEADING)
@@ -175,7 +172,7 @@ public class Options {
 
 				try {
 					Menu.window.setFrame(true);
-					Menu.options.setFrame(false);
+					frame.setVisible(false);
 					;
 				} catch (Exception emenu) {
 					emenu.printStackTrace();
