@@ -190,7 +190,7 @@ public class Partida {
 		numVidas.setBounds(73, 11, 51, 27);
 		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
-		numVidas.setText("" + Main.options.getVid());
+		numVidas.setText("" + Menu.options.getVid());
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		txtpnPistas = new JTextPane();
@@ -645,8 +645,8 @@ public class Partida {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Main.partida.setFrame(false);
-					Main.window.setFrame(true);
+					Menu.partida.setFrame(false);
+					Menu.window.setFrame(true);
 				} catch (Exception epartida) {
 					epartida.printStackTrace();
 				}
@@ -686,7 +686,7 @@ public class Partida {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fDifi.setVisible(false);
-				iniciarSecreto(Main.list, true);
+				iniciarSecreto(Menu.list, true);
 			}
 		});
 
@@ -804,7 +804,7 @@ public class Partida {
 			numVidas.setText(vidTxt);
 		}
 		if (!texto.contains("_")) {
-			iniciarSecreto(Main.list, false);
+			iniciarSecreto(Menu.list, false);
 			JOptionPane.showMessageDialog(null, "Felicidades, has adivinado la palabra,\nseleccionando otra palabra.");
 		}
 	}
@@ -818,7 +818,7 @@ public class Partida {
 		setSecreto(secreto = list.getList(r1));
 
 		if (vidas == true) {
-			numVidas.setText("" + Main.options.getVid());
+			numVidas.setText("" + Menu.options.getVid());
 			inte2 = inte;
 		}
 

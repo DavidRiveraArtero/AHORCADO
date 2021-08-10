@@ -35,8 +35,8 @@ public class ListaPalabras {
 		return list.size() - 1;
 	}
 
-	public void setList(String list) {
-		this.list.add(list.toUpperCase());
+	public void setList(String palabra) {
+		this.list.add(palabra.toUpperCase());
 	}
 
 }

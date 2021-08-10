@@ -15,10 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextPane;
 
-public class Main {
+public class Menu {
 
 	private JFrame frame;
-	static Main window = null;
+	static Menu window = null;
 	static Partida partida = null;
 	static Options options = null;
 	public static ListaPalabras list = new ListaPalabras();
@@ -30,7 +30,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new Main();
+					window = new Menu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class Main {
 	/**
 	 * Create the application.
 	 */
-	public Main() {
+	public Menu() {
 		options = new Options();
 		partida = new Partida();
 		initialize();
@@ -94,7 +94,7 @@ public class Main {
 		panel.add(btnOpciones);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/img/soga.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Menu.class.getResource("/img/soga.jpg")));
 		lblNewLabel.setBounds(0, 0, 694, 472);
 		panel.add(lblNewLabel);
 		frame.getContentPane().setLayout(groupLayout);

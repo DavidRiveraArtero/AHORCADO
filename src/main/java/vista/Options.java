@@ -27,6 +27,14 @@ public class Options {
 	private JPanel listaPalabras;
 	private int vid = 5;
 	private JTextField textVidas;
+	private JPanel añadirPalabra;
+	private JButton btnMenu;
+	private JPanel vidas;
+	private JTextPane txtpnNVidas_1;
+	private JTextPane txtpnListaDePalabras;
+	private JButton btnAdd;
+	private DefaultListModel<String> listModel;
+	private JList<String> list;
 
 	/**
 	 * Launch the application.
@@ -58,7 +66,7 @@ public class Options {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 
-		JPanel añadirPalabra = new JPanel();
+		añadirPalabra = new JPanel();
 		añadirPalabra.setBounds(13, 11, 322, 59);
 		añadirPalabra.setBorder(new LineBorder(Color.BLACK));
 		añadirPalabra.setBackground(Color.GRAY);
@@ -68,16 +76,16 @@ public class Options {
 		listaPalabras.setBorder(new LineBorder(Color.BLACK));
 		listaPalabras.setBackground(Color.GRAY);
 
-		JButton btnMenu = new JButton("Menu Principal");
+		btnMenu = new JButton("Menu Principal");
 		btnMenu.setBounds(471, 398, 203, 48);
 		btnMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
-		JPanel vidas = new JPanel();
+		vidas = new JPanel();
 		vidas.setBounds(348, 11, 322, 59);
 		vidas.setBorder(new LineBorder(Color.BLACK));
 		vidas.setBackground(Color.GRAY);
 
-		JTextPane txtpnNVidas_1 = new JTextPane();
+		txtpnNVidas_1 = new JTextPane();
 		txtpnNVidas_1.setText("Nº Vidas:");
 		txtpnNVidas_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtpnNVidas_1.setEditable(false);
@@ -106,14 +114,14 @@ public class Options {
 						.addContainerGap(65, Short.MAX_VALUE)));
 		vidas.setLayout(gl_vidas);
 
-		JTextPane txtpnListaDePalabras = new JTextPane();
+		txtpnListaDePalabras = new JTextPane();
 		txtpnListaDePalabras.setText("Lista de palabras:");
 		txtpnListaDePalabras.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtpnListaDePalabras.setEditable(false);
 		txtpnListaDePalabras.setBackground(Color.GRAY);
 
-		DefaultListModel<String> listModel = new DefaultListModel<String>();
-		JList<String> list = new JList<String>(listModel);
+		listModel = new DefaultListModel<String>();
+		list = new JList<String>(listModel);
 		list.setBackground(Color.GRAY);
 		GroupLayout gl_listaPalabras = new GroupLayout(listaPalabras);
 		gl_listaPalabras.setHorizontalGroup(gl_listaPalabras.createParallelGroup(Alignment.LEADING)
@@ -128,12 +136,9 @@ public class Options {
 						.addComponent(txtpnListaDePalabras, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(list, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE).addGap(23)));
-
-		for (int i = 0; i < Main.list.getListSize(); i++) {
-			listModel.addElement(Main.list.getList(i));
-		}
-		;
 		listaPalabras.setLayout(gl_listaPalabras);
+
+		pintarLista();
 
 		textPalabra = new JTextField();
 		textPalabra.setBounds(15, 18, 115, 23);
@@ -141,11 +146,8 @@ public class Options {
 		textPalabra.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textPalabra.setColumns(10);
 
-		JButton btnAdd = new JButton("Añadir Palabra");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnAdd = new JButton("Añadir Palabra");
+
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnAdd.setBounds(140, 11, 165, 37);
 		frame.getContentPane().setLayout(null);
@@ -172,8 +174,8 @@ public class Options {
 				}
 
 				try {
-					Main.window.setFrame(true);
-					Main.options.setFrame(false);
+					Menu.window.setFrame(true);
+					Menu.options.setFrame(false);
 					;
 				} catch (Exception emenu) {
 					emenu.printStackTrace();
@@ -181,6 +183,22 @@ public class Options {
 			}
 		});
 
+		// Evento boton añadir palabra.
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu.list.setList(textPalabra.getText());
+				listModel.addElement(textPalabra.getText().toUpperCase());
+				textPalabra.setText(null);
+			}
+		});
+
+	}
+
+	// Metodo que permite llenar la lista de palabras.
+	private void pintarLista() {
+		for (int i = 0; i < Menu.list.getListSize(); i++) {
+			listModel.addElement(Menu.list.getList(i));
+		}
 	}
 
 	// Getters y setters
