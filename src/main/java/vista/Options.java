@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 
 public class Options {
 
-	public JFrame frame;
+	private JFrame frame;
 	private JTextField textPalabra, textVidas;
 	private JPanel listaPalabras, añadirPalabra, vidas;
 	private int vid = 5;
@@ -167,7 +167,7 @@ public class Options {
 					vid = Integer.parseInt(textVidas.getText());
 				} catch (NumberFormatException evid) {
 					JOptionPane.showMessageDialog(null,
-							"Tienes que introducir un numero, manteniendo vidas por defecto.");
+							"Tienes que introducir un numero");
 				}
 
 				try {

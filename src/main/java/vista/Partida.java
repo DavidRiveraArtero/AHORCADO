@@ -24,7 +24,7 @@ import javax.swing.JRadioButton;
 
 public class Partida {
 
-	public JFrame frame;
+	private JFrame frame;
 	private JPanel fDifi, panel, ahorcado, menu, palabraSecreta;
 	private JTextField txtPalabra;
 	private String secreto;
