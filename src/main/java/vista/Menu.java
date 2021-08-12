@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -29,28 +28,12 @@ public class Menu {
 	private JPanel panel;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window = new Menu();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public Menu() {
+		initialize();
 		options = new Options();
 		partida = new Partida();
-		initialize();
 	}
 
 	/**
@@ -58,6 +41,7 @@ public class Menu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 
@@ -80,7 +64,7 @@ public class Menu {
 		txtpnPor.setBounds(429, 65, 192, 161);
 		panel.add(txtpnPor);
 
-		txtpnElAhorcado  = new JTextPane();
+		txtpnElAhorcado = new JTextPane();
 		txtpnElAhorcado.setForeground(Color.WHITE);
 		txtpnElAhorcado.setOpaque(false);
 		txtpnElAhorcado.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -111,7 +95,7 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					window.setFrame(false);
+					frame.setVisible(false);
 					partida.setFrame(true);
 					partida.selecDificultad();
 				} catch (Exception epartida) {
@@ -125,7 +109,7 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					window.setFrame(false);
+					frame.setVisible(false);
 					options.setFrame(true);
 				} catch (Exception eopciones) {
 					eopciones.printStackTrace();

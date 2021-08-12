@@ -3,7 +3,6 @@ package vista;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.Color;
-import java.awt.EventQueue;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -21,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
+import com.java.game.ahorcado_Didac_David.App;
 
 public class Partida {
 
@@ -39,25 +39,13 @@ public class Partida {
 	private GroupLayout gl_ahorcado;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Partida partida = new Partida();
-					partida.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public Partida() {
+		initialize();
+		selecDificultad();
+	}
+	public Partida(Menu window) {
 		initialize();
 		selecDificultad();
 	}
@@ -596,7 +584,6 @@ public class Partida {
 		});
 
 		// Acciones de los botones.
-
 		btnIniciar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -617,7 +604,7 @@ public class Partida {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					frame.setVisible(false);
-					Menu.window.setFrame(true);
+					App.window.setFrame(true);
 				} catch (Exception epartida) {
 					epartida.printStackTrace();
 				}

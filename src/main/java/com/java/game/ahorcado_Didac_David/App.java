@@ -1,7 +1,5 @@
 package com.java.game.ahorcado_Didac_David;
 
-import java.awt.EventQueue;
-
 import vista.Menu;
 
 /**
@@ -9,19 +7,9 @@ import vista.Menu;
  *
  */
 public class App {
-	static Menu main = null;
+	public static Menu window;
 
 	public static void main(String[] args) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					main = new Menu();
-					main.setFrame(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		window = new Menu();
 	}
 }

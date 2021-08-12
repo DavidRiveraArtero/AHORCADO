@@ -1,7 +1,5 @@
 package vista;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -12,16 +10,15 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import com.java.game.ahorcado_Didac_David.App;
 
 public class Options {
-
 	private JFrame frame;
 	private JTextField textPalabra, textVidas;
 	private JPanel listaPalabras, añadirPalabra, vidas;
@@ -34,23 +31,9 @@ public class Options {
 	private GroupLayout gl_vidas, gl_listaPalabras;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Options window = new Options();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
+	 * 
+	 * @param window
 	 */
 	public Options() {
 		initialize();
@@ -160,18 +143,20 @@ public class Options {
 
 		// Evento boton volver al menu.
 		btnMenu.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				try {
 					vid = Integer.parseInt(textVidas.getText());
 				} catch (NumberFormatException evid) {
-					JOptionPane.showMessageDialog(null,
-							"Tienes que introducir un numero");
+					JOptionPane.showMessageDialog(null, "Tienes que introducir un numero");
+					vid = 5;
+					textVidas.setText("5");
 				}
 
 				try {
-					Menu.window.setFrame(true);
+					App.window.setFrame(true);
 					frame.setVisible(false);
 					;
 				} catch (Exception emenu) {
