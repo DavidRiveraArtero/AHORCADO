@@ -25,6 +25,7 @@ import com.java.game.ahorcado_Didac_David.App;
 public class Partida {
 
 	private JFrame frame;
+	private Options options;
 	private JPanel fDifi, panel, ahorcado, menu, palabraSecreta;
 	private JTextField txtPalabra;
 	private String secreto;
@@ -37,15 +38,13 @@ public class Partida {
 	private JRadioButton rdbtnPri, rdbtnInt, rdbtnAv;
 	private ButtonGroup group;
 	private GroupLayout gl_ahorcado;
+	private int pistas;
 
 	/**
 	 * Create the application.
 	 */
-	public Partida() {
-		initialize();
-		selecDificultad();
-	}
-	public Partida(Menu window) {
+	public Partida(Options options) {
+		this.options = options;
 		initialize();
 		selecDificultad();
 	}
@@ -148,7 +147,7 @@ public class Partida {
 		numVidas.setBounds(73, 11, 51, 27);
 		numVidas.setEditable(false);
 		numVidas.setBackground(Color.GRAY);
-		numVidas.setText("" + Menu.options.getVid());
+		numVidas.setText("" + options.getVid());
 		numVidas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 		txtpnPistas = new JTextPane();
@@ -598,6 +597,38 @@ public class Partida {
 			}
 		});
 
+		// Este boton nos dira la siguiente letra de la palabra, nos restara una vida y
+		// hara invisible el boton que representa las pistas.
+		btnPedirPista.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (pistas > 0) {
+					int input = JOptionPane.showConfirmDialog(null,
+							"Pedir una pista gastara una vida entera. \n¿quieres hacerlo?", secreto,
+							JOptionPane.YES_NO_OPTION);
+					if (input == 0) {
+						for (int i = 0; i < secreto.length(); i++) {
+							if (txtPalabra.getText().charAt(i) == '_') {
+								JOptionPane.showMessageDialog(null, "La palabra contiene: " + secreto.charAt(i));
+								break;
+							}
+						}
+						pistas--;
+						vid--;
+						btnPista.setVisible(false);
+						numVidas.setText(Integer.toString(vid));
+						if (vid < 0) {
+							gameOver();
+						}
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "No te quedan pistas.");
+				}
+
+			}
+		});
+
 		// Evento boton volver al menu.
 		btnVolverAlMenu.addActionListener(new ActionListener() {
 			@Override
@@ -731,7 +762,7 @@ public class Partida {
 	// Este metodo comprueba si la letra seleccionada se encuentra en la palabra
 	// secreta.
 	private void comparaSecreto(char letra) {
-		String texto = txtPalabra.getText(), vidTxt = "";
+		String texto = txtPalabra.getText();
 		char[] tChar = texto.toCharArray();
 		boolean sale = false;
 
@@ -756,10 +787,8 @@ public class Partida {
 		if (vid < 0) {
 			gameOver();
 		} else {
-			vidTxt = Integer.toString(vid);
-			texto = String.valueOf(tChar);
-			txtPalabra.setText(texto);
-			numVidas.setText(vidTxt);
+			txtPalabra.setText(String.valueOf(tChar));
+			numVidas.setText(Integer.toString(vid));
 		}
 		if (!texto.contains("_")) {
 			iniciarSecreto(Menu.list, false);
@@ -776,7 +805,7 @@ public class Partida {
 		setSecreto(secreto = list.getList(r1));
 
 		if (vidas == true) {
-			numVidas.setText("" + Menu.options.getVid());
+			numVidas.setText("" + options.getVid());
 			inte2 = inte;
 		}
 
@@ -786,9 +815,11 @@ public class Partida {
 		textoSecreto();
 	}
 
-	// Este metodo nos permite decidir en que dificultad queremos jugar.
+	// Este metodo nos permite decidir en que dificultad queremos jugar, tambien
+	// reinicia las pistas.
 	public void selecDificultad() {
 		letrasOff();
+		pistas = 1;
 		fDifi.setVisible(true);
 	}
 

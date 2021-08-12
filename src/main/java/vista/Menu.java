@@ -17,9 +17,8 @@ import javax.swing.JTextPane;
 public class Menu {
 
 	private JFrame frame;
-	static Menu window = null;
-	public static Partida partida = null;
-	public static Options options = null;
+	private Partida partida = null;
+	private Options options = null;
 	public static ListaPalabras list = new ListaPalabras();
 	public JButton btnIniciarPartida, btnOpciones;
 	private GroupLayout groupLayout;
@@ -28,12 +27,13 @@ public class Menu {
 	private JPanel panel;
 
 	/**
-	 * Create the application.
+	 * Create the application. 
 	 */
 	public Menu() {
-		initialize();
 		options = new Options();
-		partida = new Partida();
+		partida = new Partida(options);
+		initialize();
+		
 	}
 
 	/**
